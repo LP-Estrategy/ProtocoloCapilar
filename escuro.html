@@ -1,0 +1,2549 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Protocolo Capilar JL</title>
+<script>(function(){try{var h=document.head||document.getElementsByTagName('head')[0];if(h&&!h.querySelector('meta[name=viewport]')){var m=document.createElement('meta');m.name='viewport';m.content='width=device-width, initial-scale=1, viewport-fit=cover';h.appendChild(m);}}catch(e){}})();</script>
+<style>
+  /* ============================================================
+     PROTOCOLO CAPILAR JL — página de vendas
+     Dobra 01: Hero
+     Sistema: Barbearia DS (latão sobre ônix) — tema escuro fixo
+     ============================================================ */
+  :root {
+    --bg:#0E0B07;
+    --bg-2:#120D08;
+    --surface:#1E1811;
+    --line:#2E2617;
+    --line-strong:#43371F;
+    --text:#F2EBDC;
+    --text-muted:#A99B80;
+    --brass:#CBA24E;
+    --brass-bright:#E6C778;
+    --oxblood:#B34B34;
+    --on-brass:#14100A;
+
+    --font-display:"Oswald","Bebas Neue","Arial Narrow","Haettenschweiler",sans-serif;
+    --font-serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+    --font-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+
+    --radius:2px;
+    --maxw:1120px;
+  }
+
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; font-size:113%; }
+  p{ text-wrap:pretty; }
+  body {
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.055;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap{ position:relative; z-index:1; max-width:var(--maxw); margin:0 auto; padding:0 1.5rem; }
+
+  /* ---------------- HERO ---------------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    padding:3rem 1.5rem 4.5rem;
+    background:
+      radial-gradient(80% 55% at 50% -8%, color-mix(in oklab, var(--brass) 20%, transparent), transparent 60%),
+      radial-gradient(120% 90% at 50% 120%, #000 0%, transparent 55%),
+      linear-gradient(180deg, var(--bg-2), var(--bg));
+  }
+  /* moldura de latão discreta, tipo espelho de barbearia */
+  .hero::after{
+    content:""; position:absolute; inset:16px; z-index:1;
+    border:1px solid color-mix(in oklab, var(--brass) 22%, transparent);
+    pointer-events:none;
+  }
+  .hero-inner{ position:relative; z-index:2; max-width:820px; display:flex; flex-direction:column; align-items:center; gap:1.6rem; }
+
+  /* logo */
+  .logo{ display:flex; flex-direction:column; align-items:center; gap:.75rem; margin-bottom:.5rem; }
+  .logo svg{ width:96px; height:96px; display:block; }
+  .logo .wordmark{
+    font-family:var(--font-display); text-transform:uppercase;
+    letter-spacing:.42em; font-weight:500; font-size:.82rem; color:var(--brass);
+    padding-left:.42em;
+  }
+
+  .hero h1{
+    margin:0;
+    font-family:var(--font-display);
+    text-transform:uppercase;
+    font-weight:700;
+    line-height:.98;
+    letter-spacing:.005em;
+    font-size:clamp(2.5rem, 1.2rem + 5.6vw, 5.4rem);
+    text-wrap:balance;
+    color:var(--text);
+  }
+  .hero h1 .strike{ color:var(--text-muted); text-decoration:line-through; text-decoration-color:var(--oxblood); text-decoration-thickness:3px; }
+  .hero h1 .lead{ display:block; font-size:.44em; letter-spacing:.02em; color:var(--text-muted); font-weight:500; margin-top:.6rem; }
+  .hero h1 .brand{
+    display:block; margin-top:.15rem;
+    font-family:var(--font-serif); font-style:italic; text-transform:none;
+    font-weight:600; letter-spacing:.01em;
+    font-size:.86em; color:var(--brass);
+  }
+
+  .hero h2{
+    margin:0; max-width:44ch;
+    font-family:var(--font-serif);
+    font-weight:500;
+    font-size:clamp(1.15rem, 0.95rem + 0.9vw, 1.6rem);
+    line-height:1.4;
+    color:var(--text-muted);
+  }
+  .hero h2 b{ color:var(--text); font-weight:600; }
+
+  .hero .sub{
+    margin:0; max-width:52ch;
+    font-size:clamp(.92rem, 0.88rem + 0.2vw, 1.02rem);
+    color:var(--text);
+    opacity:.7;
+  }
+
+  .divider{ display:flex; align-items:center; gap:.7rem; color:var(--brass); opacity:.8; }
+  .divider::before,.divider::after{ content:""; width:46px; height:1px; background:currentColor; }
+  .divider span{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.2em; font-size:.9rem; }
+
+  .cta{
+    font-family:var(--font-display); text-transform:uppercase; letter-spacing:.1em;
+    font-weight:700; font-size:clamp(1.05rem,.92rem + .6vw,1.5rem);
+    display:inline-flex; align-items:center; gap:.7rem;
+    padding:1.35rem 2.8rem; border-radius:var(--radius); border:1px solid transparent;
+    background:linear-gradient(180deg,var(--brass-bright),var(--brass));
+    color:var(--on-brass); text-decoration:none; cursor:pointer;
+    box-shadow:0 12px 30px -12px color-mix(in oklab, var(--brass) 70%, transparent);
+    transition:transform .16s ease, box-shadow .2s ease, filter .2s ease;
+  }
+  .cta:hover{ transform:translateY(-3px); box-shadow:0 18px 40px -14px color-mix(in oklab, var(--brass) 80%, transparent); filter:brightness(1.05); }
+  .cta:focus-visible{ outline:2px solid var(--brass-bright); outline-offset:4px; }
+  .cta .arrow{ transition:transform .16s ease; }
+  .cta:hover .arrow{ transform:translateX(4px); }
+
+  .hero .cta{ animation:heroBob 2.4s ease-in-out infinite; }
+  @keyframes heroBob{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-7px); } }
+  .reassure{
+    margin:0; font-family:var(--font-display); text-transform:uppercase;
+    letter-spacing:.16em; font-size:.82rem; color:var(--text-muted);
+  }
+
+  .scrollcue{
+    position:absolute; bottom:1.4rem; left:50%; transform:translateX(-50%); z-index:2;
+    color:var(--brass); opacity:.6; animation:bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{ 0%,100%{ transform:translate(-50%,0);} 50%{ transform:translate(-50%,7px);} }
+  @media (prefers-reduced-motion:reduce){ .scrollcue{ animation:none; } .cta,.hero .cta{ transition:none; animation:none; } }
+
+  /* ---------------- DOBRA 02: DIAGNÓSTICO ---------------- */
+  .fold{ position:relative; z-index:1; padding:clamp(3.5rem,8vw,7rem) 0; }
+  .fold-2{ background:linear-gradient(180deg, var(--bg), var(--bg-2)); border-top:1px solid var(--line); }
+
+  .f2-head{
+    margin:0 auto 1rem; max-width:22ch; text-align:center;
+    font-family:var(--font-display); text-transform:uppercase; font-weight:600;
+    line-height:1.05; letter-spacing:.01em;
+    font-size:clamp(1.6rem,1.1rem + 2.4vw,3rem); color:var(--text); text-wrap:balance;
+  }
+  .f2-head .whisper{
+    display:block; margin-top:.9rem;
+    font-family:var(--font-serif); font-style:italic; text-transform:none;
+    font-weight:500; letter-spacing:0;
+    font-size:.5em; color:var(--text-muted);
+  }
+  .f2-intro{
+    margin:0 auto clamp(2.2rem,5vw,3.4rem); max-width:40ch; text-align:center;
+    font-family:var(--font-serif); font-size:clamp(1.05rem,1rem + .5vw,1.35rem);
+    color:var(--text-muted);
+  }
+
+  .problem-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem;
+    max-width:900px; margin:0 auto;
+  }
+  .pcard{
+    position:relative; background:var(--surface); border:1px solid var(--line);
+    border-radius:var(--radius); padding:2rem 1.5rem;
+    display:flex; flex-direction:column; align-items:center; text-align:center; gap:1rem;
+    opacity:0; transform:translateY(22px);
+    transition:opacity .6s ease, transform .6s ease, border-color .3s ease;
+  }
+  .pcard.in{ opacity:1; transform:none; }
+  .pcard::after{ content:""; position:absolute; inset:5px; border:1px solid var(--line); pointer-events:none; opacity:.5; }
+  .pcard:hover{ border-color:color-mix(in oklab, var(--brass) 45%, var(--line)); }
+  .pcard .ico{ width:44px; height:44px; color:var(--brass); position:relative; z-index:1; }
+  .pcard .num{
+    position:absolute; top:.7rem; left:.9rem; z-index:1;
+    font-family:var(--font-display); font-size:.72rem; letter-spacing:.15em;
+    color:var(--brass); opacity:.55; font-variant-numeric:tabular-nums;
+  }
+  .pcard p{ margin:0; position:relative; z-index:1; color:var(--text); font-size:.98rem; line-height:1.45; }
+  .pcard p b{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.05em; font-weight:600; font-size:.82rem; color:var(--brass-bright); display:block; margin-bottom:.3rem; }
+  /* últimos 2 cards centralizados */
+  .problem-grid .pcard:nth-child(4){ grid-column:2 / 3; }
+  .problem-grid .pcard:nth-child(5){ grid-column:3 / 4; }
+
+  .alert-box{
+    max-width:640px; margin:clamp(2.2rem,5vw,3.4rem) auto 0;
+    border:1px solid color-mix(in oklab, var(--oxblood) 60%, var(--line));
+    background:color-mix(in oklab, var(--oxblood) 9%, var(--bg));
+    border-radius:var(--radius); padding:1.6rem 1.8rem; text-align:center;
+  }
+  .alert-box .q{
+    font-family:var(--font-serif); font-style:italic;
+    font-size:clamp(1.2rem,1rem + 1vw,1.7rem); color:var(--oxblood); line-height:1.3;
+  }
+  .caret{ display:inline-block; width:2px; height:1.05em; background:var(--oxblood); margin-left:2px; vertical-align:-.15em; animation:blink 1s step-end infinite; }
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .closing{ max-width:60ch; margin:clamp(2.4rem,5vw,3.6rem) auto 0; display:flex; flex-direction:column; gap:1.2rem; }
+  .closing p{ margin:0; font-size:clamp(1rem,.96rem + .3vw,1.12rem); color:var(--text-muted); line-height:1.7; }
+  .closing p .hl{ color:var(--brass); font-family:var(--font-serif); font-style:italic; font-weight:600; }
+  .closing p strong{ color:var(--text); font-weight:600; }
+
+  @media (max-width:760px){
+    .problem-grid{ grid-template-columns:repeat(2,1fr); }
+    .problem-grid .pcard:nth-child(4){ grid-column:1 / 2; }
+    .problem-grid .pcard:nth-child(5){ grid-column:2 / 3; }
+  }
+  @media (max-width:460px){
+    .problem-grid{ grid-template-columns:1fr; }
+    .problem-grid .pcard:nth-child(n){ grid-column:auto; }
+  }
+  @media (prefers-reduced-motion:reduce){ .pcard{ opacity:1; transform:none; transition:none; } .caret{ animation:none; } }
+
+  /* ---------------- DOBRA 03: ZONA DE PERIGO ---------------- */
+  :root{
+    --crimson-1:#83382B;
+    --crimson-2:#A63C2C;
+    --crimson-3:#C6412C;
+    --crimson:#C6412C;
+    --crimson-bg:#26100B;
+  }
+  .fold-3{ background:linear-gradient(180deg, var(--bg-2), #0B0705); border-top:1px solid var(--line); }
+
+  .f3-head{ max-width:60ch; margin:0 auto; border-left:3px solid var(--crimson); padding-left:1.2rem; }
+  .alert-tag{
+    display:inline-flex; align-items:center; gap:.5rem; margin-bottom:.7rem;
+    font-family:var(--font-display); text-transform:uppercase; letter-spacing:.24em;
+    font-size:.68rem; color:var(--crimson-3);
+  }
+  .alert-tag svg{ width:16px; height:16px; }
+  .f3-head h2{
+    margin:0; font-family:var(--font-display); text-transform:uppercase; font-weight:600;
+    line-height:1.08; letter-spacing:.01em; text-wrap:balance;
+    font-size:clamp(1.5rem,1.1rem + 2vw,2.6rem); color:var(--crimson-3);
+  }
+  .f3-head h2 .wt{ color:var(--text); }
+
+  .f3-lead{ max-width:56ch; margin:1.8rem auto 0; font-family:var(--font-serif); font-size:clamp(1.05rem,1rem + .5vw,1.3rem); color:var(--text-muted); }
+  .f3-lead.strong{ color:var(--text); }
+
+  .timeline{ position:relative; max-width:720px; margin:clamp(2.4rem,5vw,3.6rem) auto 0; padding-left:46px; }
+  .tl-track,.tl-fill{ position:absolute; left:15px; width:2px; border-radius:2px; }
+  .tl-track{ top:8px; bottom:8px; background:var(--line-strong); opacity:.6; }
+  .tl-fill{ top:8px; height:0; background:linear-gradient(180deg,var(--brass),var(--crimson-3)); transition:height .5s ease; }
+
+  .tl-item{ position:relative; margin-bottom:1.3rem; }
+  .tl-node{
+    position:absolute; left:-38px; top:6px; width:16px; height:16px; border-radius:50%;
+    background:var(--bg); border:2px solid var(--line-strong); z-index:2;
+    transition:border-color .4s ease, box-shadow .4s ease, background .4s ease;
+  }
+  .tl-item.in .tl-node{ border-color:var(--crimson-3); background:var(--crimson-bg); box-shadow:0 0 0 4px color-mix(in oklab, var(--crimson) 22%, transparent); }
+
+  .dcard{
+    border-radius:var(--radius); padding:1.5rem 1.6rem;
+    opacity:0; transform:translateX(-16px);
+    transition:opacity .55s ease, transform .55s ease, border-color .3s ease;
+  }
+  .tl-item.in .dcard{ opacity:1; transform:none; }
+  .dcard h3{
+    display:flex; align-items:center; gap:.6rem; margin:0 0 .7rem;
+    font-family:var(--font-display); text-transform:uppercase; font-weight:600;
+    letter-spacing:.04em; font-size:clamp(1rem,.95rem + .4vw,1.2rem); color:var(--text);
+  }
+  .dcard h3 svg{ width:20px; height:20px; flex:none; }
+  .dcard p{ margin:0; color:var(--text-muted); font-size:.98rem; line-height:1.6; }
+  .dcard p em{ font-style:italic; color:color-mix(in oklab, var(--text) 80%, var(--crimson)); }
+
+  /* agravamento: fundo escurece, borda fica mais vermelha */
+  .tl-item:nth-child(2) .dcard{ background:#201A12; border:1px solid var(--line); }
+  .tl-item:nth-child(3) .dcard{ background:#1A130D; border:1px solid var(--crimson-1); }
+  .tl-item:nth-child(4) .dcard{ background:#150E09; border:1px solid var(--crimson-2); }
+  .tl-item:nth-child(5) .dcard{ background:#100A06; border:1px solid var(--crimson-3); box-shadow:0 0 30px -12px color-mix(in oklab,var(--crimson) 50%, transparent); }
+  .tl-item:nth-child(2) .dcard h3 svg,.tl-item:nth-child(3) .dcard h3 svg{ color:var(--crimson-2); }
+  .tl-item:nth-child(4) .dcard h3 svg,.tl-item:nth-child(5) .dcard h3 svg{ color:var(--crimson-3); }
+
+  .danger-block{
+    position:relative; max-width:640px; margin:clamp(2.6rem,6vw,4rem) auto 0;
+    border:1px solid var(--crimson-3); border-radius:var(--radius);
+    background:linear-gradient(160deg, var(--crimson-bg), #140906);
+    padding:clamp(2rem,4vw,2.8rem);
+    display:flex; flex-direction:column; gap:1.1rem;
+    box-shadow:0 24px 60px -24px color-mix(in oklab, var(--crimson) 45%, transparent);
+    opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease;
+  }
+  .danger-block.in{ opacity:1; transform:none; }
+  .danger-block::before{
+    content:""; position:absolute; top:0; left:0; right:0; height:3px;
+    background:linear-gradient(90deg, transparent, var(--crimson-3), transparent);
+  }
+  .danger-block p{ margin:0; color:var(--text); font-size:clamp(1.05rem,1rem + .5vw,1.28rem); line-height:1.55; }
+  .danger-block p b{ color:#fff; font-weight:700; }
+
+  @media (max-width:560px){
+    .timeline{ padding-left:36px; }
+    .tl-track,.tl-fill{ left:11px; }
+    .tl-node{ left:-31px; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .tl-item .dcard,.danger-block{ opacity:1; transform:none; transition:none; }
+    .tl-fill{ transition:none; }
+  }
+
+  /* ---------------- DOBRA 04: A CULPA NÃO É SUA ---------------- */
+  :root{ --sage:#93B39B; --sage-dim:#6F9079; }
+  .fold-4{
+    background:
+      radial-gradient(70% 50% at 12% 0%, color-mix(in oklab, var(--sage) 12%, transparent), transparent 60%),
+      linear-gradient(180deg, #0B0705, #100C08);
+    border-top:1px solid var(--line);
+  }
+  .f4-grid{ display:grid; grid-template-columns:1.05fr .95fr; gap:clamp(1.6rem,4vw,3.4rem); align-items:start; }
+  .f4-text{ display:flex; flex-direction:column; gap:1.5rem; }
+
+  .f4-head{ margin:0; font-family:var(--font-display); text-transform:uppercase; font-weight:600; line-height:1.05; letter-spacing:.01em; font-size:clamp(1.5rem,1.1rem + 2vw,2.5rem); color:var(--sage); text-wrap:balance; }
+  .f4-head .soft{ display:block; margin-top:.5rem; font-family:var(--font-serif); font-style:italic; text-transform:none; font-weight:500; font-size:.6em; color:color-mix(in oklab, var(--sage) 55%, var(--text)); }
+
+  .f4-lead{ margin:0; font-family:var(--font-serif); font-size:1.18rem; color:var(--text-muted); }
+
+  .cadence{ list-style:none; margin:.2rem 0; padding:0; display:flex; flex-direction:column; gap:1rem; }
+  .cadence li{ position:relative; padding-left:1.5rem; color:var(--text); font-size:1.02rem; line-height:1.5; opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; }
+  .cadence li.in{ opacity:1; transform:none; }
+  .cadence li::before{ content:""; position:absolute; left:0; top:.55em; width:8px; height:8px; background:var(--sage); transform:rotate(45deg); }
+  .cadence li b{ color:var(--sage); font-weight:600; }
+
+  .punch{ margin:.6rem 0; padding:clamp(1.5rem,3vw,2.2rem) 1.4rem; text-align:center; border:1px solid color-mix(in oklab, var(--sage) 32%, var(--line)); border-radius:var(--radius); background:color-mix(in oklab, var(--sage) 7%, var(--bg)); }
+  .punch .big{ display:block; font-family:var(--font-display); text-transform:uppercase; font-weight:700; line-height:.98; letter-spacing:.01em; font-size:clamp(1.55rem,1.1rem + 2.4vw,2.7rem); color:var(--text); opacity:0; transform:scale(1.16); transition:opacity .55s ease, transform .55s cubic-bezier(.16,1,.3,1); }
+  .punch.in .big{ opacity:1; transform:none; }
+
+  .f4-p{ margin:0; color:var(--text-muted); line-height:1.7; font-size:1.02rem; }
+  .f4-p strong{ color:var(--text); font-weight:600; }
+  .f4-p .money{ color:var(--sage); font-weight:600; }
+
+  .f4-transition{ margin:.5rem 0 0; font-family:var(--font-display); text-transform:uppercase; font-weight:600; line-height:1.12; letter-spacing:.02em; font-size:clamp(1.25rem,1rem + 1.2vw,1.75rem); color:var(--text); opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+  .f4-transition.in{ opacity:1; transform:none; }
+  .f4-transition .brand{ color:var(--brass); font-family:var(--font-serif); font-style:italic; text-transform:none; font-weight:600; }
+
+  /* mídia */
+  .f4-media{ position:sticky; top:2rem; }
+  .f4-media figure{
+    margin:0; position:relative; aspect-ratio:4/5; overflow:hidden;
+    border:1px solid var(--brass); outline:1px solid color-mix(in oklab, var(--brass) 40%, transparent); outline-offset:5px;
+    border-radius:var(--radius);
+    background:
+      radial-gradient(120% 80% at 50% 15%, #1c140b, transparent 60%),
+      linear-gradient(160deg, #15100a, #090604);
+    box-shadow:var(--shadow-2,0 30px 60px -28px #000);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .f4-media .playwrap{ display:flex; flex-direction:column; align-items:center; gap:1rem; color:var(--brass); }
+  .f4-media .play{
+    width:74px; height:74px; border-radius:50%;
+    border:1px solid var(--brass); display:grid; place-items:center;
+    background:color-mix(in oklab, var(--brass) 12%, transparent);
+    transition:transform .2s ease, background .2s ease;
+  }
+  .f4-media figure:hover .play{ transform:scale(1.06); background:color-mix(in oklab, var(--brass) 20%, transparent); }
+  .f4-media .play svg{ width:26px; height:26px; margin-left:3px; }
+  .f4-media .plabel{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.24em; font-size:.66rem; color:var(--text-muted); }
+  .f4-media figcaption{ margin-top:.9rem; font-family:var(--font-serif); font-style:italic; font-size:1rem; color:var(--text-muted); text-align:center; }
+  .f4-media .tape{ position:absolute; top:1rem; left:1rem; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.2em; font-size:.6rem; color:var(--brass); border:1px solid color-mix(in oklab,var(--brass) 45%, transparent); padding:.25rem .5rem; border-radius:1px; }
+
+  @media (max-width:900px){
+    .f4-grid{ grid-template-columns:1fr; }
+    .f4-media{ position:static; order:-1; margin-bottom:.5rem; }
+    .f4-media figure{ aspect-ratio:16/10; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .cadence li,.punch .big,.f4-transition{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* ---------------- DOBRA 05: A SOLUÇÃO ---------------- */
+  .fold-5{
+    text-align:center;
+    background:
+      radial-gradient(70% 50% at 50% 4%, color-mix(in oklab, var(--brass) 16%, transparent), transparent 60%),
+      linear-gradient(180deg, #100C08, #0E0B07);
+    border-top:1px solid var(--line);
+  }
+  .f5-head{ margin:0 auto; max-width:20ch; font-family:var(--font-display); text-transform:uppercase; font-weight:600; line-height:1.06; letter-spacing:.01em; font-size:clamp(1.7rem,1.2rem + 2.6vw,3.1rem); color:var(--text); text-wrap:balance; }
+  .f5-head .sub{ display:block; margin-top:.55rem; font-family:var(--font-serif); font-style:italic; text-transform:none; font-weight:600; font-size:.5em; color:var(--brass); }
+
+  /* mockup 3D */
+  .mock-stage{ perspective:1400px; margin:clamp(2.4rem,6vw,4rem) auto clamp(1.6rem,4vw,2.6rem); display:flex; justify-content:center; }
+  .mock-float{ animation:floaty 6s ease-in-out infinite; transform-style:preserve-3d; }
+  @keyframes floaty{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-14px); } }
+  .book{
+    position:relative; width:clamp(200px,42vw,250px); aspect-ratio:25/34;
+    transform:rotateY(0deg) rotateX(0deg); opacity:0;
+    transition:transform 1.1s cubic-bezier(.16,1,.3,1), opacity .8s ease;
+    transform-style:preserve-3d;
+  }
+  .mock-stage.in .book{ transform:rotateY(-22deg) rotateX(6deg); opacity:1; }
+  .book .cover{
+    position:absolute; inset:0; border-radius:2px 5px 5px 2px; overflow:hidden;
+    background:
+      radial-gradient(120% 90% at 30% 10%, #241a0e, transparent 55%),
+      linear-gradient(155deg, #191209, #0c0805);
+    border:1px solid color-mix(in oklab, var(--brass) 55%, #000);
+    box-shadow:0 30px 55px -20px rgba(0,0,0,.85), inset 0 0 0 6px color-mix(in oklab,var(--brass) 18%, transparent);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.7rem; padding:1.4rem;
+  }
+  /* lombada à esquerda */
+  .book .cover::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:16px; background:linear-gradient(90deg, rgba(0,0,0,.55), rgba(255,255,255,.05) 60%, rgba(0,0,0,.25)); border-right:1px solid rgba(0,0,0,.5); }
+  /* páginas à direita */
+  .book::after{ content:""; position:absolute; right:-7px; top:6px; bottom:6px; width:9px; border-radius:0 3px 3px 0; background:repeating-linear-gradient(180deg,#e7dfcd,#e7dfcd 1px,#c7bda6 2px,#c7bda6 3px); transform:rotateY(12deg); transform-origin:left; opacity:.9; }
+  .book .cframe{ width:100%; height:100%; position:absolute; inset:0; margin:10px; border:1px solid color-mix(in oklab,var(--brass) 45%, transparent); pointer-events:none; }
+  .book .ckicker{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.34em; font-size:.6rem; color:var(--brass); z-index:1; }
+  .book .cmono{ font-family:var(--font-serif); font-style:italic; font-weight:600; font-size:clamp(2.2rem,7vw,2.9rem); color:var(--brass-bright); line-height:1; z-index:1; }
+  .book .cbar{ width:44px; height:1px; background:var(--brass); position:relative; z-index:1; }
+  .book .cbar::after{ content:""; position:absolute; left:50%; top:50%; width:5px; height:5px; background:var(--brass); transform:translate(-50%,-50%) rotate(45deg); }
+  .book .ctitle{ font-family:var(--font-display); text-transform:uppercase; font-weight:600; letter-spacing:.12em; font-size:.72rem; color:var(--text); z-index:1; }
+  .book .cfoot{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.24em; font-size:.52rem; color:var(--text-muted); position:absolute; bottom:1.2rem; z-index:1; }
+  .mock-shadow{ width:min(60%,220px); height:26px; margin:-.4rem auto 0; border-radius:50%; background:radial-gradient(ellipse, rgba(0,0,0,.6), transparent 70%); filter:blur(6px); animation:shadowpulse 6s ease-in-out infinite; }
+  @keyframes shadowpulse{ 0%,100%{ transform:scale(1); opacity:.6; } 50%{ transform:scale(.86); opacity:.4; } }
+
+  .f5-intro{ max-width:52ch; margin:0 auto; color:var(--text-muted); font-family:var(--font-serif); font-size:clamp(1.08rem,1rem + .6vw,1.35rem); line-height:1.5; }
+  .f5-intro b{ color:var(--text); font-weight:600; font-style:normal; }
+
+  /* bullets */
+  .benes{ max-width:640px; margin:clamp(2.2rem,5vw,3.2rem) auto 0; text-align:left; display:flex; flex-direction:column; gap:1.6rem; border:1px solid var(--line); border-radius:var(--radius); padding:clamp(1.6rem,4vw,2.4rem); background:var(--surface); position:relative; }
+  .benes::after{ content:""; position:absolute; inset:5px; border:1px solid var(--line); opacity:.5; pointer-events:none; }
+  .bene{ display:grid; grid-template-columns:auto 1fr; gap:.5rem 1rem; align-items:start; position:relative; z-index:1; }
+  .bene .chk{ grid-row:1 / span 2; width:30px; height:30px; border-radius:50%; display:grid; place-items:center; background:color-mix(in oklab,var(--brass) 15%, transparent); border:1px solid var(--brass); color:var(--brass); transform:scale(0); }
+  .bene.in .chk{ animation:pop .5s cubic-bezier(.34,1.56,.64,1) forwards; }
+  .bene .chk svg{ width:16px; height:16px; }
+  .bene h3{ margin:0; font-family:var(--font-display); text-transform:uppercase; font-weight:600; letter-spacing:.04em; font-size:1.05rem; color:var(--text); opacity:0; transform:translateY(8px); transition:.5s ease; }
+  .bene p{ margin:0; color:var(--text-muted); font-size:.98rem; line-height:1.55; opacity:0; transform:translateY(8px); transition:.5s ease .06s; }
+  .bene.in h3,.bene.in p{ opacity:1; transform:none; }
+  @keyframes pop{ 0%{ transform:scale(0); } 70%{ transform:scale(1.15); } 100%{ transform:scale(1); } }
+
+  .promise{ max-width:56ch; margin:clamp(2.4rem,5vw,3.4rem) auto 0; padding:1.6rem 1.8rem; border-radius:var(--radius); border:1px solid color-mix(in oklab,var(--brass) 30%, var(--line)); background:color-mix(in oklab,var(--brass) 7%, var(--bg)); font-family:var(--font-serif); font-size:clamp(1.12rem,1rem + .7vw,1.42rem); line-height:1.5; color:var(--text); opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .promise.in{ opacity:1; transform:none; }
+  .promise b{ color:var(--brass); font-weight:600; }
+
+  .noline{ margin:clamp(2.2rem,5vw,3rem) auto 0; display:flex; flex-direction:column; gap:.3rem; }
+  .noline span{ font-family:var(--font-display); text-transform:uppercase; font-weight:700; letter-spacing:.02em; font-size:clamp(1.3rem,1rem + 1.6vw,2.1rem); color:var(--text); opacity:0; transform:translateY(12px); transition:opacity .45s ease, transform .45s ease; }
+  .noline span.in{ opacity:1; transform:none; }
+  .noline span:last-child{ color:var(--brass); }
+
+  .cta-wrap{ margin:clamp(2.4rem,5vw,3.4rem) auto 0; display:flex; flex-direction:column; align-items:center; gap:1.2rem; }
+  .cta.pulse{ width:min(70%,420px); justify-content:center; animation:ctapulse 2.6s ease-in-out infinite; }
+  @keyframes ctapulse{ 0%,100%{ box-shadow:0 12px 30px -12px color-mix(in oklab,var(--brass) 60%, transparent); } 50%{ box-shadow:0 12px 40px -8px color-mix(in oklab,var(--brass) 85%, transparent); transform:translateY(-2px); } }
+  .microcopy{ display:flex; flex-wrap:wrap; justify-content:center; gap:1.2rem; }
+  .microcopy span{ display:inline-flex; align-items:center; gap:.45rem; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.1em; font-size:.82rem; color:var(--text-muted); }
+  .microcopy svg{ width:14px; height:14px; color:var(--brass); }
+
+  @media (prefers-reduced-motion:reduce){
+    .mock-float,.mock-shadow,.cta.pulse{ animation:none; }
+    .book,.bene .chk,.bene h3,.bene p,.promise,.noline span{ opacity:1; transform:none; transition:none; }
+    .mock-stage.in .book{ transform:rotateY(-14deg); }
+  }
+
+  /* ---------------- DOBRA 06: AUTORIDADE ---------------- */
+  .fold-6{ background:linear-gradient(180deg,#0E0B07,#120D08); border-top:1px solid var(--line); text-align:center; }
+  .f6-head{ margin:0 auto; font-family:var(--font-serif); font-style:italic; font-weight:600; font-size:clamp(1.5rem,1.2rem + 1.6vw,2.3rem); color:var(--text); }
+  .f6-head::after{ content:""; display:block; width:46px; height:1px; background:var(--brass); margin:1rem auto 0; }
+
+  .authors{ display:grid; grid-template-columns:1fr 1.5fr 1fr; gap:clamp(1rem,3vw,2rem); align-items:center; margin:clamp(2.4rem,5vw,3.6rem) auto 0; max-width:960px; }
+
+  .expert{ display:flex; flex-direction:column; align-items:center; gap:.9rem; }
+  .expert .avatar{
+    width:clamp(120px,20vw,168px); aspect-ratio:1; border-radius:50%; overflow:hidden;
+    border:1px solid var(--brass); outline:1px solid color-mix(in oklab,var(--brass) 40%, transparent); outline-offset:5px;
+    background:radial-gradient(120% 110% at 50% 20%, #221910, #0c0805);
+    display:grid; place-items:end center;
+    transform:scale(.86); opacity:0; transition:transform .8s cubic-bezier(.16,1,.3,1), opacity .6s ease;
+  }
+  .expert.in .avatar{ transform:scale(1); opacity:1; }
+  .expert .avatar svg{ width:78%; height:78%; color:color-mix(in oklab,var(--brass) 55%, var(--text-muted)); }
+  .expert .ename{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.06em; font-weight:600; font-size:1rem; color:var(--text); }
+  .expert .erole{ font-family:var(--font-body); font-size:.82rem; color:var(--brass); letter-spacing:.02em; }
+
+  .quote{ position:relative; padding:clamp(1.2rem,3vw,2rem) clamp(1rem,3vw,1.6rem); }
+  .quote::before{ content:"\201C"; position:absolute; top:-.35em; left:50%; transform:translateX(-50%); font-family:var(--font-serif); font-size:clamp(4rem,12vw,7rem); line-height:1; color:var(--brass); opacity:.35; }
+  .quote p{ margin:0; font-family:var(--font-serif); font-size:clamp(1.05rem,1rem + .7vw,1.4rem); line-height:1.5; color:var(--text); font-style:italic; }
+  .quote p .hl{ color:var(--brass); font-style:normal; }
+  .quote .sign{ margin-top:1.4rem; display:flex; align-items:center; justify-content:center; gap:1.4rem; }
+  .quote .sign .sig{ font-family:"Snell Roundhand","Segoe Script","Brush Script MT",cursive; font-size:1.7rem; color:var(--brass-bright); transform:rotate(-4deg); }
+  .quote .sign .amp{ color:var(--text-muted); font-family:var(--font-serif); font-style:italic; }
+
+  /* contadores */
+  .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; max-width:900px; margin:clamp(2.6rem,6vw,4rem) auto 0; }
+  .stat{ border:1px solid var(--line); border-radius:var(--radius); padding:clamp(1.4rem,3vw,1.9rem) .8rem; background:var(--surface); position:relative; }
+  .stat::after{ content:""; position:absolute; inset:5px; border:1px solid var(--line); opacity:.4; pointer-events:none; }
+  .stat .num{ font-family:var(--font-display); font-weight:700; font-size:clamp(1.9rem,1.2rem + 2.6vw,3rem); line-height:1; color:var(--brass-bright); font-variant-numeric:tabular-nums; position:relative; z-index:1; }
+  .stat .lbl{ margin-top:.6rem; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.1em; font-size:.8rem; color:var(--text-muted); position:relative; z-index:1; }
+
+  @media (max-width:820px){
+    .authors{ grid-template-columns:1fr 1fr; }
+    .expert{ order:0; }
+    .quote{ order:2; grid-column:1 / -1; }
+    .stats{ grid-template-columns:repeat(2,1fr); }
+    .expert .avatar{ width:clamp(96px,26vw,140px); }
+  }
+  @media (prefers-reduced-motion:reduce){ .expert .avatar{ opacity:1; transform:none; transition:none; } }
+
+  /* ---------------- DOBRA 07: O MÉTODO ---------------- */
+  .fold-7{ background:linear-gradient(180deg,#120D08,#0E0B07); border-top:1px solid var(--line); text-align:center; }
+  .f7-head{ margin:0 auto; max-width:20ch; font-family:var(--font-display); text-transform:uppercase; font-weight:600; line-height:1.06; letter-spacing:.01em; font-size:clamp(1.7rem,1.2rem + 2.6vw,3rem); color:var(--text); text-wrap:balance; }
+  .f7-intro{ max-width:52ch; margin:1.2rem auto 0; color:var(--text); opacity:.8; font-family:var(--font-serif); font-size:clamp(1.05rem,1rem + .6vw,1.32rem); line-height:1.5; }
+
+  /* stepper sticky */
+  .stepper{ position:sticky; top:0; z-index:6; margin-top:clamp(2rem,5vw,3rem); padding:1.1rem 0; background:color-mix(in oklab, var(--bg) 88%, transparent); backdrop-filter:blur(8px); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .track{ position:relative; display:flex; justify-content:space-between; max-width:460px; margin:0 auto; padding:0 1rem; }
+  .track::before,.track .fill{ content:""; position:absolute; top:22px; left:calc(1rem + 22px); right:calc(1rem + 22px); height:2px; }
+  .track::before{ background:var(--line-strong); }
+  .track .fill{ right:auto; width:calc((100% - 2rem - 44px) * var(--p,0)); background:linear-gradient(90deg,var(--brass),var(--brass-bright)); transition:width .5s ease; }
+  .step{ display:flex; flex-direction:column; align-items:center; gap:.5rem; background:none; border:none; cursor:pointer; z-index:1; font:inherit; padding:0; }
+  .step .dot{ width:44px; height:44px; border-radius:50%; display:grid; place-items:center; background:var(--bg); border:1px solid var(--line-strong); color:var(--text-muted); font-family:var(--font-display); font-weight:600; font-size:1.05rem; transition:all .35s ease; }
+  .step .name{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.14em; font-size:.6rem; color:var(--text-muted); transition:color .35s ease; }
+  .step.active .dot,.step:hover .dot{ border-color:var(--brass); color:var(--on-brass); background:linear-gradient(180deg,var(--brass-bright),var(--brass)); box-shadow:0 0 0 4px color-mix(in oklab,var(--brass) 22%, transparent); }
+  .step.active .name{ color:var(--brass); }
+  .step:focus-visible{ outline:2px solid var(--brass); outline-offset:3px; border-radius:6px; }
+
+  .method-panels{ display:flex; flex-direction:column; gap:clamp(1.6rem,4vw,2.6rem); margin-top:clamp(2rem,5vw,3rem); text-align:left; }
+  .mpanel{ scroll-margin-top:110px; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); padding:clamp(1.3rem,3vw,2rem); position:relative; opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease, border-color .4s ease; }
+  .mpanel.in{ opacity:1; transform:none; }
+  .mpanel.current{ border-color:color-mix(in oklab,var(--brass) 45%, var(--line)); box-shadow:0 0 40px -20px color-mix(in oklab,var(--brass) 60%, transparent); }
+  .mpanel .split{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(1.2rem,3vw,2.2rem); align-items:center; }
+  .mpanel.reverse .mp-media{ order:2; }
+  .mpanel.reverse .mp-text{ order:1; }
+
+  .mp-media{ margin:0; position:relative; aspect-ratio:4/3; overflow:hidden; border:1px solid var(--brass); border-radius:var(--radius); background:radial-gradient(120% 90% at 50% 15%,#1b140b,transparent 60%),linear-gradient(160deg,#15100a,#090604); display:grid; place-items:center; }
+  .mp-media .play{ width:60px; height:60px; border-radius:50%; border:1px solid var(--brass); display:grid; place-items:center; color:var(--brass); background:color-mix(in oklab,var(--brass) 12%, transparent); transition:transform .2s ease; }
+  .mp-media:hover .play{ transform:scale(1.08); }
+  .mp-media .play svg{ width:22px; height:22px; margin-left:2px; }
+  .mp-media .cap{ position:absolute; bottom:.8rem; left:0; right:0; text-align:center; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.2em; font-size:.58rem; color:var(--text-muted); }
+  .mp-media .tape{ position:absolute; top:.8rem; left:.8rem; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.18em; font-size:.55rem; color:var(--brass); border:1px solid color-mix(in oklab,var(--brass) 45%, transparent); padding:.2rem .45rem; }
+
+  .mp-eyebrow{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.28em; font-size:.66rem; color:var(--brass); }
+  .mp-text h3{ margin:.5rem 0 .9rem; font-family:var(--font-display); text-transform:uppercase; font-weight:700; letter-spacing:.02em; font-size:clamp(1.5rem,1.1rem + 1.8vw,2.2rem); color:var(--text); }
+  .mp-text p{ margin:0; color:var(--text-muted); line-height:1.65; font-size:1rem; }
+  .mp-text p b{ color:var(--text); font-weight:600; }
+  .tags{ list-style:none; margin:1.3rem 0 0; padding:0; display:flex; flex-wrap:wrap; gap:.55rem; }
+  .tags li{ display:inline-flex; align-items:center; gap:.45rem; padding:.45rem .85rem; border:1px solid var(--line-strong); border-radius:999px; font-size:.9rem; color:var(--text); background:var(--bg); }
+  .tags li svg{ width:17px; height:17px; color:var(--brass); flex:none; }
+
+  .f7-close{ margin:clamp(2.6rem,6vw,4rem) auto clamp(1.6rem,4vw,2.4rem); font-family:var(--font-display); text-transform:uppercase; font-weight:700; letter-spacing:.02em; font-size:clamp(1.3rem,1rem + 1.8vw,2.2rem); color:var(--text); text-align:center; }
+  .f7-close b{ color:var(--brass); }
+
+  @media (max-width:760px){
+    .mpanel .split{ grid-template-columns:1fr; }
+    .mpanel.reverse .mp-media,.mpanel .mp-media{ order:-1; }
+    .mpanel.reverse .mp-text,.mpanel .mp-text{ order:0; }
+    .step .name{ font-size:.54rem; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .mpanel{ opacity:1; transform:none; transition:none; }
+    .track .fill{ transition:none; }
+  }
+
+  /* ---------------- DOBRA 08: MÓDULO 1 (BANHO) ---------------- */
+  .fold-8{ background:linear-gradient(180deg,#0E0B07,#120D08); border-top:1px solid var(--line); text-align:center; }
+  .modpill{ display:inline-flex; align-items:center; gap:.5rem; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.22em; font-size:.66rem; color:var(--on-brass); background:linear-gradient(180deg,var(--brass-bright),var(--brass)); padding:.4rem .9rem; border-radius:999px; }
+  .f8-head{ margin:1.1rem auto 0; max-width:22ch; font-family:var(--font-display); text-transform:uppercase; font-weight:700; line-height:1.04; letter-spacing:.01em; font-size:clamp(1.7rem,1.2rem + 2.6vw,3rem); color:var(--text); text-wrap:balance; }
+  .f8-head .sub{ display:block; margin-top:.5rem; font-family:var(--font-serif); font-style:italic; text-transform:none; font-weight:500; font-size:.5em; color:var(--brass); }
+  .f8-intro{ max-width:56ch; margin:1.3rem auto 0; color:var(--text-muted); font-family:var(--font-serif); font-size:clamp(1.05rem,1rem + .6vw,1.32rem); line-height:1.5; }
+  .f8-intro b{ color:var(--text); font-weight:600; font-style:normal; }
+
+  /* slider antes/depois */
+  .ba{ position:relative; width:100%; max-width:760px; margin:clamp(2.2rem,5vw,3.4rem) auto 0; aspect-ratio:16/10; border:1px solid var(--brass); border-radius:var(--radius); overflow:hidden; touch-action:pan-y; cursor:ew-resize; --pos:50%; user-select:none; box-shadow:var(--shadow-2,0 30px 60px -28px #000); }
+  .ba-layer{ position:absolute; inset:0; display:grid; place-items:center; }
+  .ba-after{ background:radial-gradient(120% 90% at 70% 25%, #3a2c16, transparent 55%), linear-gradient(150deg,#241a0d,#0f0a06); }
+  .ba-after .hair{ background:repeating-linear-gradient(94deg, rgba(230,199,120,.16) 0 2px, transparent 2px 7px); }
+  .ba-before{ background:linear-gradient(150deg,#1a1a1a,#0c0c0c); clip-path:inset(0 calc(100% - var(--pos)) 0 0); }
+  .ba-before .hair{ background:repeating-linear-gradient(70deg, rgba(150,140,120,.22) 0 1px, transparent 1px 4px), repeating-linear-gradient(120deg, rgba(120,110,95,.18) 0 1px, transparent 1px 6px); }
+  .ba .hair{ position:absolute; inset:0; }
+  .ba-tag{ position:absolute; top:1rem; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.2em; font-size:.62rem; padding:.3rem .6rem; border-radius:1px; z-index:3; }
+  .ba-tag.left{ left:1rem; color:#d8d2c8; border:1px solid rgba(216,210,200,.4); }
+  .ba-tag.right{ right:1rem; color:var(--brass); border:1px solid color-mix(in oklab,var(--brass) 45%, transparent); }
+  .ba-cap{ position:absolute; bottom:1rem; font-family:var(--font-serif); font-style:italic; font-size:.9rem; z-index:3; }
+  .ba-cap.left{ left:1rem; color:#b8b2a8; }
+  .ba-cap.right{ right:1rem; color:var(--brass); }
+  .ba-handle{ position:absolute; top:0; bottom:0; left:var(--pos); width:2px; margin-left:-1px; background:var(--brass); z-index:4; }
+  .ba-grip{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:46px; height:46px; border-radius:50%; border:1px solid var(--brass); background:var(--bg); color:var(--brass); display:grid; place-items:center; cursor:ew-resize; box-shadow:0 6px 16px -6px #000; }
+  .ba-grip svg{ width:22px; height:22px; }
+  .ba-grip:focus-visible{ outline:2px solid var(--brass-bright); outline-offset:3px; }
+  .ba-hint{ position:absolute; left:50%; bottom:.5rem; transform:translateX(-50%); z-index:3; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.24em; font-size:.55rem; color:var(--text-muted); pointer-events:none; opacity:.8; }
+
+  /* lista do módulo */
+  .learn{ max-width:640px; margin:clamp(2.4rem,5vw,3.4rem) auto 0; text-align:left; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); padding:clamp(1.6rem,4vw,2.4rem); position:relative; }
+  .learn::after{ content:""; position:absolute; inset:5px; border:1px solid var(--line); opacity:.4; pointer-events:none; }
+  .learn h3{ margin:0 0 1.4rem; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.14em; font-size:.82rem; color:var(--brass); position:relative; z-index:1; }
+  .learn ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:1.2rem; position:relative; z-index:1; }
+  .learn li{ display:grid; grid-template-columns:auto 1fr; gap:.2rem 1rem; align-items:start; }
+  .learn .lic{ grid-row:1 / span 2; width:38px; height:38px; border-radius:50%; display:grid; place-items:center; border:1px solid var(--brass); background:color-mix(in oklab,var(--brass) 12%, transparent); color:var(--brass); transform:scale(0); }
+  .learn li.in .lic{ animation:pop .5s cubic-bezier(.34,1.56,.64,1) forwards; }
+  .learn .lic svg{ width:19px; height:19px; }
+  .learn li b{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.03em; font-weight:600; font-size:.98rem; color:var(--text); opacity:0; transform:translateY(8px); transition:.5s ease; }
+  .learn li p{ margin:0; color:var(--text-muted); font-size:.94rem; line-height:1.5; opacity:0; transform:translateY(8px); transition:.5s ease .06s; }
+  .learn li.in b,.learn li.in p{ opacity:1; transform:none; }
+
+  /* tags de formato */
+  .formats{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.8rem; max-width:660px; margin:clamp(2rem,4vw,2.8rem) auto 0; }
+  .fmt{ display:flex; align-items:center; justify-content:flex-start; gap:.7rem; min-width:0; border:1px solid var(--line-strong); border-radius:var(--radius); padding:1rem 1.1rem; background:var(--surface); text-align:left; }
+  .fmt svg{ width:26px; height:26px; color:var(--brass); flex:none; }
+  .fmt div{ min-width:0; }
+  .fmt b{ display:block; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.04em; font-size:1.02rem; color:var(--text); }
+  .fmt span{ display:block; font-size:.82rem; line-height:1.25; color:var(--text-muted); }
+
+  @media (max-width:560px){ .formats{ grid-template-columns:1fr; max-width:360px; } }
+  @media (prefers-reduced-motion:reduce){ .learn .lic,.learn li b,.learn li p{ opacity:1; transform:none; transition:none; } }
+
+  /* ---------------- DOBRA 09: MÓDULO 2 (PÓS-BANHO) ---------------- */
+  .fold-9{ background:linear-gradient(180deg,#120D08,#0E0B07); border-top:1px solid var(--line); text-align:center; }
+
+  .mgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; max-width:920px; margin:clamp(2.4rem,5vw,3.4rem) auto 0; }
+  .mcard{
+    text-align:left; font:inherit; color:inherit; cursor:pointer;
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:1.5rem 1.4rem; display:flex; flex-direction:column; gap:.7rem; position:relative;
+    opacity:0; transition:opacity .5s ease, transform .3s ease, box-shadow .3s ease, border-color .3s ease, background .3s ease;
+  }
+  .mcard.in{ opacity:1; }
+  .mcard .mc-ic{ width:40px; height:40px; border-radius:50%; display:grid; place-items:center; border:1px solid var(--brass); color:var(--brass); background:color-mix(in oklab,var(--brass) 12%, transparent); transition:transform .3s ease; }
+  .mcard .mc-ic svg{ width:20px; height:20px; }
+  .mc-title{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.05em; font-weight:600; font-size:1rem; color:var(--text); line-height:1.15; }
+  .mc-body{ display:block; max-height:0; overflow:hidden; opacity:0; transition:max-height .3s ease, opacity .3s ease; }
+  .mc-body p{ margin:.3rem 0 0; color:var(--text-muted); font-size:.92rem; line-height:1.55; }
+  .mc-body p .k{ color:var(--brass); font-weight:600; }
+  .mc-more{ align-self:flex-start; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.1em; font-size:.74rem; color:var(--on-brass); background:linear-gradient(180deg,var(--brass-bright),var(--brass)); border-radius:999px; padding:.4rem .9rem; transition:opacity .2s ease; animation:nudge 1.8s ease-in-out infinite; }
+  @keyframes nudge{ 0%,100%{ transform:translateY(0); box-shadow:0 0 0 rgba(0,0,0,0); } 50%{ transform:translateY(-3px); box-shadow:0 6px 16px -6px color-mix(in oklab,var(--brass) 70%, transparent); } }
+
+  .mcard.open{ background:color-mix(in oklab,var(--brass) 7%, var(--surface)); border-color:color-mix(in oklab,var(--brass) 45%, var(--line)); box-shadow:0 24px 50px -24px #000, 0 0 0 1px color-mix(in oklab,var(--brass) 20%, transparent); transform:translateY(-3px); }
+  .mcard.open .mc-ic{ transform:scale(1.06); }
+  .mcard.open .mc-body{ max-height:340px; opacity:1; }
+  .mcard.open .mc-more{ opacity:0; }
+  .mcard:focus-visible{ outline:2px solid var(--brass); outline-offset:3px; }
+  @media (hover:hover){
+    .mcard:hover{ border-color:color-mix(in oklab,var(--brass) 40%, var(--line)); transform:translateY(-3px); box-shadow:0 20px 44px -22px #000; }
+    .mcard:hover .mc-body{ max-height:340px; opacity:1; }
+    .mcard:hover .mc-more{ opacity:0; }
+  }
+
+  @media (max-width:780px){ .mgrid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:520px){ .mgrid{ grid-template-columns:1fr; } }
+  @media (prefers-reduced-motion:reduce){ .mcard{ opacity:1; transition:none; } .mc-more{ animation:none; } }
+
+  /* ---------------- DOBRA 10: MÓDULO 3 (MANUTENÇÃO) ---------------- */
+  .fold-10{ background:linear-gradient(180deg,#0E0B07,#120D08); border-top:1px solid var(--line); text-align:center; }
+
+  .checklist2{ max-width:660px; margin:clamp(2.4rem,5vw,3.4rem) auto 0; text-align:left; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); padding:.4rem clamp(1.4rem,4vw,2.2rem); position:relative; }
+  .ci{ display:grid; grid-template-columns:auto 1fr; gap:.3rem 1.1rem; padding:1.4rem 0; border-bottom:1px dashed var(--line); }
+  .ci:last-child{ border-bottom:none; }
+  .ci .box{ grid-row:1 / span 2; width:32px; height:32px; border:2px solid var(--line-strong); border-radius:7px; display:grid; place-items:center; color:var(--brass); transition:border-color .35s ease, background .35s ease; }
+  .ci.checked .box{ border-color:var(--brass); background:color-mix(in oklab,var(--brass) 12%, transparent); }
+  .ci .box svg{ width:20px; height:20px; }
+  .ci .box svg path{ stroke-dasharray:26; stroke-dashoffset:26; transition:stroke-dashoffset .5s ease .1s; }
+  .ci.checked .box svg path{ stroke-dashoffset:0; }
+  .ci b{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.05em; font-weight:600; font-size:1rem; color:var(--text); opacity:0; transform:translateX(-8px); transition:.5s ease; }
+  .ci p{ margin:.2rem 0 0; color:var(--text-muted); font-size:.94rem; line-height:1.55; opacity:0; transform:translateX(-8px); transition:.5s ease .06s; }
+  .ci.checked b,.ci.checked p{ opacity:1; transform:none; }
+
+  .week{ max-width:760px; margin:clamp(2.2rem,5vw,3.2rem) auto 0; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); padding:clamp(1.5rem,4vw,2.2rem); }
+  .week h3{ margin:0 0 1.3rem; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.14em; font-size:.82rem; color:var(--brass); }
+  .days{ display:grid; grid-template-columns:repeat(6,1fr); gap:.7rem; }
+  .day{ border:1px solid var(--line); border-radius:var(--radius); padding:1rem .5rem; display:flex; flex-direction:column; align-items:center; gap:.5rem; opacity:.35; transform:translateY(6px); transition:opacity .4s ease, transform .4s ease, border-color .4s ease, background .4s ease; }
+  .day.lit{ opacity:1; transform:none; border-color:color-mix(in oklab,var(--brass) 40%, var(--line)); background:color-mix(in oklab,var(--brass) 6%, transparent); }
+  .day .dow{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.08em; font-size:.74rem; color:var(--text-muted); }
+  .day .dic{ width:26px; height:26px; color:var(--brass); }
+  .day .dlabel{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.03em; font-size:.68rem; color:var(--text); text-align:center; }
+  .wlegend{ display:flex; flex-wrap:wrap; justify-content:center; gap:1.2rem; margin-top:1.4rem; font-size:.74rem; color:var(--text-muted); }
+  .wlegend span{ display:inline-flex; align-items:center; gap:.4rem; }
+  .wlegend svg{ width:15px; height:15px; color:var(--brass); }
+
+  @media (max-width:600px){
+    .days{ grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:minmax(92px,1fr); overflow-x:auto; padding-bottom:.5rem; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .ci .box svg path{ stroke-dashoffset:0; transition:none; }
+    .ci b,.ci p,.day{ opacity:1; transform:none; transition:none; }
+  }
+
+  /* ---------------- DOBRA 11: PROVA (CARROSSEL) ---------------- */
+  .fold-11{ background:linear-gradient(180deg,#120D08,#0E0B07); border-top:1px solid var(--line); text-align:center; }
+  .f11-head{ margin:0 auto; max-width:22ch; font-family:var(--font-display); text-transform:uppercase; font-weight:700; line-height:1.06; letter-spacing:.01em; font-size:clamp(1.6rem,1.15rem + 2.4vw,2.8rem); color:var(--text); text-wrap:balance; }
+  .f11-head b{ color:var(--brass); }
+  .f11-intro{ max-width:56ch; margin:1.3rem auto 0; color:var(--text); opacity:.8; font-family:var(--font-serif); font-size:clamp(1.05rem,1rem + .6vw,1.32rem); line-height:1.5; }
+
+  .carousel{ max-width:720px; margin:clamp(2.2rem,5vw,3.2rem) auto 0; }
+  .dots{ display:flex; justify-content:center; gap:.5rem; margin-bottom:1.2rem; }
+  .dot2{ width:9px; height:9px; border-radius:50%; background:var(--line-strong); border:none; padding:0; cursor:pointer; transition:width .3s ease, background .3s ease, border-radius .3s ease; }
+  .dot2.active{ width:24px; border-radius:5px; background:var(--brass); }
+  .dot2:focus-visible{ outline:2px solid var(--brass); outline-offset:3px; }
+  .track2{ display:flex; gap:1rem; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; cursor:grab; }
+  .track2::-webkit-scrollbar{ display:none; }
+  .track2.dragging{ cursor:grabbing; scroll-snap-type:none; }
+  .slide2{ flex:0 0 100%; scroll-snap-align:center; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); padding:clamp(1.2rem,3vw,1.8rem); text-align:left; }
+  .ba2{ display:grid; grid-template-columns:1fr 1fr; gap:2px; border:1px solid var(--brass); border-radius:var(--radius); overflow:hidden; aspect-ratio:16/9; }
+  .ba2 .half{ position:relative; }
+  .ba2 .before2{ background:linear-gradient(150deg,#1a1a1a,#0c0c0c); }
+  .ba2 .before2::before{ content:""; position:absolute; inset:0; background:repeating-linear-gradient(70deg, rgba(150,140,120,.22) 0 1px, transparent 1px 4px); }
+  .ba2 .after2{ background:radial-gradient(120% 90% at 60% 25%, #3a2c16, transparent 55%), linear-gradient(150deg,#241a0d,#0f0a06); }
+  .ba2 .after2::before{ content:""; position:absolute; inset:0; background:repeating-linear-gradient(94deg, rgba(230,199,120,.16) 0 2px, transparent 2px 7px); }
+  .ba2 .htag{ position:absolute; top:.7rem; z-index:2; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.18em; font-size:.58rem; padding:.25rem .5rem; }
+  .ba2 .before2 .htag{ left:.7rem; color:#d8d2c8; border:1px solid rgba(216,210,200,.35); }
+  .ba2 .after2 .htag{ right:.7rem; color:var(--brass); border:1px solid color-mix(in oklab,var(--brass) 45%, transparent); }
+  .ba2 .hcap{ position:absolute; bottom:.7rem; left:.7rem; right:.7rem; z-index:2; font-family:var(--font-serif); font-style:italic; font-size:.78rem; }
+  .ba2 .before2 .hcap{ color:#b0aaa0; }
+  .ba2 .after2 .hcap{ color:var(--brass); text-align:right; }
+  .slide2 blockquote{ margin:1.3rem 0 0; font-family:var(--font-serif); font-style:italic; font-size:clamp(1.1rem,1rem + .7vw,1.4rem); line-height:1.4; color:var(--text); }
+  .slide2 .attr{ margin-top:1rem; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.08em; font-size:.72rem; color:var(--brass); }
+  .slide2 .attr .type{ display:block; color:var(--text-muted); letter-spacing:.04em; margin-top:.2rem; }
+  .slide2 .swipe{ margin-top:1rem; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.22em; font-size:.56rem; color:var(--text-muted); }
+  .f11-close{ margin:clamp(2.4rem,5vw,3.4rem) auto clamp(1.6rem,4vw,2.2rem); font-family:var(--font-display); text-transform:uppercase; font-weight:700; letter-spacing:.02em; font-size:clamp(1.3rem,1rem + 1.6vw,2.1rem); color:var(--text); }
+  .f11-close b{ color:var(--brass); }
+
+  @media (max-width:520px){ .ba2{ aspect-ratio:5/4; } }
+  @media (prefers-reduced-motion:reduce){ .track2{ scroll-behavior:auto; } }
+
+  /* ---------------- DOBRA 12: DEPOIMENTOS (MASONRY) ---------------- */
+  .fold-12{ background:linear-gradient(180deg,#0E0B07,#120D08); border-top:1px solid var(--line); text-align:center; }
+  .f12-head{ margin:0 auto; max-width:26ch; font-family:var(--font-serif); font-style:italic; font-weight:600; font-size:clamp(1.4rem,1.1rem + 1.6vw,2.2rem); color:var(--text); text-wrap:balance; }
+  .f12-intro{ max-width:56ch; margin:1.2rem auto 0; color:var(--text); opacity:.8; font-family:var(--font-serif); font-size:clamp(1.02rem,1rem + .5vw,1.28rem); line-height:1.5; }
+
+  .masonry{ column-count:3; column-gap:1rem; max-width:1000px; margin:clamp(2.4rem,5vw,3.4rem) auto 0; }
+  .tcard{ break-inside:avoid; margin:0 0 1rem; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); padding:1.5rem; text-align:left; opacity:0; transition:opacity .6s ease; }
+  .tcard.in{ opacity:1; }
+  .thead{ display:flex; align-items:center; gap:.8rem; margin-bottom:.8rem; }
+  .tavatar{ width:46px; height:46px; border-radius:50%; overflow:hidden; border:1px solid var(--brass); background:radial-gradient(120% 110% at 50% 25%, #241a10, #0c0805); display:grid; place-items:end center; flex:none; color:color-mix(in oklab,var(--brass) 55%, var(--text-muted)); }
+  .tavatar svg{ width:80%; height:80%; }
+  .tname{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.05em; font-size:.72rem; color:var(--text); line-height:1.3; }
+  .tname .city{ display:block; color:var(--text-muted); letter-spacing:.03em; font-size:.66rem; }
+  .tstars{ display:flex; gap:2px; color:var(--brass); margin-bottom:.6rem; }
+  .tstars svg{ width:15px; height:15px; fill:currentColor; }
+  .tcard blockquote{ margin:0; font-family:var(--font-serif); font-style:italic; font-size:1.02rem; line-height:1.5; color:var(--text); }
+
+  .f12-close{ margin:clamp(2.6rem,6vw,4rem) auto 0; text-align:center; }
+  .bignum{ font-family:var(--font-display); font-weight:700; line-height:1; font-size:clamp(2.6rem,1.5rem + 4vw,4.5rem); color:var(--brass-bright); font-variant-numeric:tabular-nums; }
+  .f12-close .lbl{ display:block; margin-top:.4rem; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.16em; font-size:.8rem; color:var(--text); }
+  .f12-q{ margin:1.2rem auto 0; font-family:var(--font-serif); font-style:italic; font-size:clamp(1.15rem,1rem + .8vw,1.6rem); color:var(--brass); opacity:0; transform:translateY(12px); transition:opacity .6s ease, transform .6s ease; }
+  .f12-q.in{ opacity:1; transform:none; }
+
+  @media (max-width:860px){ .masonry{ column-count:2; } }
+  @media (max-width:560px){ .masonry{ column-count:1; max-width:440px; } }
+  @media (prefers-reduced-motion:reduce){ .tcard,.f12-q{ opacity:1; transform:none; transition:none; } }
+
+  /* ---------------- DOBRA 13: QUIZ ---------------- */
+  .fold-13{ background:linear-gradient(180deg,#120D08,#0E0B07); border-top:1px solid var(--line); text-align:center; }
+  .f13-head{ margin:0 auto; max-width:20ch; font-family:var(--font-display); text-transform:uppercase; font-weight:700; line-height:1.06; letter-spacing:.01em; font-size:clamp(1.6rem,1.15rem + 2.4vw,2.8rem); color:var(--text); text-wrap:balance; }
+  .f13-head .sub{ display:block; margin-top:.5rem; font-family:var(--font-serif); font-style:italic; text-transform:none; font-weight:500; font-size:.5em; color:var(--brass); }
+  .f13-intro{ max-width:52ch; margin:1.3rem auto 0; color:var(--text); opacity:.8; font-family:var(--font-serif); font-size:clamp(1.05rem,1rem + .6vw,1.3rem); line-height:1.5; }
+
+  .quiz{ max-width:680px; margin:clamp(2.4rem,5vw,3.4rem) auto 0; text-align:left; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); padding:.4rem clamp(1.4rem,4vw,2.2rem); }
+  .qi{ width:100%; text-align:left; font:inherit; color:inherit; background:none; border:none; cursor:pointer; display:grid; grid-template-columns:auto 1fr; gap:1rem; align-items:center; padding:1.2rem 0; border-bottom:1px dashed var(--line); transition:background .2s ease; }
+  .qi:last-of-type{ border-bottom:none; }
+  .qi:hover{ background:color-mix(in oklab,var(--brass) 4%, transparent); }
+  .qi .box{ width:30px; height:30px; border:2px solid var(--line-strong); border-radius:7px; display:grid; place-items:center; color:var(--brass); transition:border-color .35s ease, background .35s ease; }
+  .qi.checked .box{ border-color:var(--brass); background:color-mix(in oklab,var(--brass) 12%, transparent); }
+  .qi .box svg{ width:18px; height:18px; }
+  .qi .box svg path{ stroke-dasharray:26; stroke-dashoffset:26; transition:stroke-dashoffset .5s ease .1s; }
+  .qi.checked .box svg path{ stroke-dashoffset:0; }
+  .qi .qtext{ color:var(--text); font-size:1rem; line-height:1.5; opacity:.5; transition:opacity .4s ease; }
+  .qi.checked .qtext{ opacity:1; }
+  .qi:focus-visible{ outline:2px solid var(--brass); outline-offset:2px; }
+
+  .qresult{ max-width:560px; margin:clamp(2.2rem,5vw,3rem) auto 0; border:1px solid color-mix(in oklab,var(--brass) 35%, var(--line)); border-radius:var(--radius); background:color-mix(in oklab,var(--brass) 7%, var(--bg)); padding:clamp(1.6rem,4vw,2.2rem); }
+  .qresult .qlabel{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.2em; font-size:.66rem; color:var(--brass); }
+  .qscore{ display:flex; align-items:baseline; justify-content:center; gap:.6rem; margin:.6rem 0 1rem; }
+  .qscore .qnum{ font-family:var(--font-display); font-weight:700; font-size:clamp(2.6rem,1.6rem + 4vw,4rem); line-height:1; color:var(--brass-bright); font-variant-numeric:tabular-nums; }
+  .qscore .qof{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.08em; font-size:.9rem; color:var(--text-muted); }
+  .qmsg{ font-family:var(--font-serif); font-style:italic; font-size:clamp(1.05rem,1rem + .6vw,1.32rem); line-height:1.5; color:var(--text); }
+
+  @media (prefers-reduced-motion:reduce){
+    .qi .box svg path{ stroke-dashoffset:0; transition:none; }
+    .qi .qtext{ opacity:1; }
+  }
+
+  /* ---------------- DOBRA 14: NÃO É PRA TODO MUNDO ---------------- */
+  .fold-14{
+    text-align:center; border-top:1px solid var(--line);
+    background:
+      radial-gradient(70% 45% at 50% 4%, color-mix(in oklab, var(--crimson) 18%, transparent), transparent 60%),
+      linear-gradient(180deg, #150B08, #0E0B07);
+  }
+  .f14-head{ margin:0 auto; max-width:20ch; font-family:var(--font-display); text-transform:uppercase; font-weight:700; line-height:1.06; letter-spacing:.01em; font-size:clamp(1.6rem,1.15rem + 2.4vw,2.9rem); color:var(--text); text-wrap:balance; }
+  .f14-head b{ color:var(--crimson-3); }
+  .f14-intro{ max-width:52ch; margin:1.3rem auto 0; color:var(--text); opacity:.8; font-family:var(--font-serif); font-size:clamp(1.05rem,1rem + .6vw,1.3rem); line-height:1.5; }
+
+  .nofit{ max-width:680px; margin:clamp(2.4rem,5vw,3.4rem) auto 0; text-align:left; border:1px solid color-mix(in oklab,var(--crimson) 30%, var(--line)); border-radius:var(--radius); background:linear-gradient(180deg, #1a110d, #140d09); padding:.4rem clamp(1.4rem,4vw,2.2rem); }
+  .nfi{ display:grid; grid-template-columns:auto 1fr; gap:.3rem 1.1rem; padding:1.4rem 0; border-bottom:1px dashed color-mix(in oklab,var(--crimson) 20%, var(--line)); }
+  .nfi:last-child{ border-bottom:none; }
+  .nfi .x{ grid-row:1 / span 2; width:32px; height:32px; border:2px solid color-mix(in oklab,var(--crimson) 50%, var(--line-strong)); border-radius:7px; display:grid; place-items:center; color:var(--crimson-3); transition:border-color .35s ease, background .35s ease; }
+  .nfi.crossed .x{ border-color:var(--crimson-3); background:color-mix(in oklab,var(--crimson) 12%, transparent); }
+  .nfi .x svg{ width:18px; height:18px; }
+  .nfi .x svg path{ stroke-dasharray:18; stroke-dashoffset:18; transition:stroke-dashoffset .4s ease; }
+  .nfi .x svg path:nth-child(2){ transition-delay:.18s; }
+  .nfi.crossed .x svg path{ stroke-dashoffset:0; }
+  .nfi b{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.03em; font-weight:600; font-size:1rem; color:var(--text); opacity:0; transform:translateX(-8px); transition:.5s ease .2s; }
+  .nfi p{ margin:.25rem 0 0; color:var(--text-muted); font-size:.94rem; line-height:1.55; opacity:0; transform:translateX(-8px); transition:.5s ease .28s; }
+  .nfi.crossed b,.nfi.crossed p{ opacity:1; transform:none; }
+
+  .turn{ max-width:600px; margin:clamp(2.4rem,5vw,3.4rem) auto 0; border:1px solid color-mix(in oklab,var(--sage) 55%, var(--line)); border-radius:var(--radius); background:linear-gradient(160deg, #16271b, #0c140e); padding:clamp(2rem,4vw,2.6rem); text-align:center; box-shadow:0 24px 60px -26px color-mix(in oklab,var(--sage) 40%, transparent); opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease; }
+  .turn.in{ opacity:1; transform:none; }
+  .turn::before{ content:""; display:block; width:44px; height:44px; margin:0 auto 1rem; border-radius:50%; border:1px solid var(--sage); background:color-mix(in oklab,var(--sage) 15%, transparent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2393B39B' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E") center/22px no-repeat; }
+  .turn p{ margin:0; color:#eaf1ea; font-family:var(--font-serif); font-size:clamp(1.1rem,1rem + .7vw,1.45rem); line-height:1.45; }
+  .turn p.big{ margin-top:.6rem; font-family:var(--font-display); text-transform:uppercase; font-weight:700; letter-spacing:.02em; font-size:clamp(1.3rem,1.05rem + 1.4vw,2rem); color:#fff; }
+  .turn p.big b{ color:var(--sage); }
+
+  .cta.green{ background:linear-gradient(180deg, var(--sage), var(--sage-dim)); color:#0c140e; box-shadow:0 12px 30px -12px color-mix(in oklab,var(--sage) 70%, transparent); }
+  .cta.green.pulse{ animation:ctapulseGreen 2.6s ease-in-out infinite; }
+  @keyframes ctapulseGreen{ 0%,100%{ box-shadow:0 12px 30px -12px color-mix(in oklab,var(--sage) 60%, transparent); } 50%{ box-shadow:0 12px 40px -8px color-mix(in oklab,var(--sage) 85%, transparent); transform:translateY(-2px); } }
+
+  @media (prefers-reduced-motion:reduce){
+    .nfi .x svg path{ stroke-dashoffset:0; transition:none; }
+    .nfi b,.nfi p,.turn{ opacity:1; transform:none; transition:none; }
+    .cta.green.pulse{ animation:none; }
+  }
+
+  /* ---------------- DOBRA 15: OFERTA / ESCASSEZ ---------------- */
+  .fold-15{
+    text-align:center; border-top:1px solid var(--line);
+    background:
+      radial-gradient(70% 45% at 50% 4%, color-mix(in oklab, var(--crimson) 15%, transparent), transparent 60%),
+      linear-gradient(180deg, #140B08, #0E0B07);
+  }
+  .f15-head{ margin:0 auto; max-width:20ch; font-family:var(--font-display); text-transform:uppercase; font-weight:700; line-height:1.06; letter-spacing:.01em; font-size:clamp(1.7rem,1.2rem + 2.6vw,3.1rem); color:var(--text); text-wrap:balance; }
+  .f15-head .green{ color:var(--sage); }
+  .f15-head .red{ color:var(--crimson-3); }
+  .f15-intro{ max-width:54ch; margin:1.3rem auto 0; color:var(--text); opacity:.8; font-family:var(--font-serif); font-size:clamp(1.05rem,1rem + .6vw,1.3rem); line-height:1.5; }
+  .f15-intro .accent{ display:block; margin-top:.8rem; opacity:1; color:var(--text); font-weight:600; font-style:normal; }
+
+  .offercard{ max-width:620px; margin:clamp(2.4rem,5vw,3.2rem) auto 0; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); padding:clamp(1.6rem,4vw,2.4rem); }
+  .oc-label{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.2em; font-size:.68rem; color:var(--brass); }
+
+  .pbar{ position:relative; height:26px; margin:1.2rem 0 0; border-radius:999px; background:var(--line-strong); overflow:hidden; }
+  .pbar .pfill{ height:100%; width:0; border-radius:999px; background:linear-gradient(90deg, var(--sage-dim), var(--sage)); transition:width 1.4s cubic-bezier(.16,1,.3,1); }
+  .pbar.animate .pfill{ width:92.6%; }
+  .pbar.animate .pfill{ animation:barpulse 5s ease-in-out infinite 1.5s; }
+  @keyframes barpulse{ 0%,84%,100%{ box-shadow:0 0 0 rgba(0,0,0,0); } 92%{ box-shadow:0 0 18px 2px color-mix(in oklab,var(--sage) 70%, transparent); } }
+  .pcap{ margin-top:.9rem; font-family:var(--font-body); color:var(--text-muted); font-size:.9rem; }
+  .pcap .big{ font-family:var(--font-display); font-weight:700; font-size:1.6rem; color:var(--crimson-3); vertical-align:-2px; font-variant-numeric:tabular-nums; }
+
+  .offerstats{ display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; margin-top:1.6rem; }
+  .ostat{ border:1px solid var(--line); border-radius:var(--radius); padding:1.1rem .5rem; background:var(--bg); }
+  .ostat .on{ font-family:var(--font-display); font-weight:700; font-size:clamp(1.5rem,1rem + 2vw,2.1rem); line-height:1; color:var(--text); font-variant-numeric:tabular-nums; }
+  .ostat.red .on{ color:var(--crimson-3); }
+  .ostat.green .on{ color:var(--sage); }
+  .ostat .ol{ margin-top:.4rem; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.08em; font-size:.76rem; color:var(--text-muted); }
+
+  .countdown{ max-width:520px; margin:clamp(2rem,4vw,2.6rem) auto 0; border:1px solid color-mix(in oklab,var(--crimson) 28%, var(--line)); border-radius:var(--radius); background:linear-gradient(180deg,#1a0f0b,#130b08); padding:clamp(1.6rem,4vw,2.2rem); }
+  .clock{ display:flex; justify-content:center; align-items:flex-start; gap:.6rem; }
+  .cunit{ display:flex; flex-direction:column; align-items:center; gap:.5rem; }
+  .cnum{ font-family:ui-monospace,"SF Mono",Menlo,monospace; font-weight:700; font-size:clamp(2rem,1.2rem + 3vw,3rem); color:var(--crimson-3); background:#0d0705; border:1px solid color-mix(in oklab,var(--crimson) 30%, var(--line)); border-radius:var(--radius); padding:.5rem .7rem; min-width:1.9em; font-variant-numeric:tabular-nums; }
+  .cnum.secs{ animation:secblink 1s steps(1,end) infinite; }
+  @keyframes secblink{ 50%{ opacity:.55; } }
+  .clab{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.14em; font-size:.6rem; color:var(--text-muted); }
+  .csep{ font-family:ui-monospace,monospace; font-size:clamp(1.6rem,1rem + 2.4vw,2.4rem); color:color-mix(in oklab,var(--crimson) 55%, var(--text-muted)); padding-top:.55rem; }
+  .cwhen{ margin:1.2rem 0 0; font-family:var(--font-body); font-size:.86rem; color:var(--text-muted); }
+  .cwhen b{ color:var(--text); }
+
+  .alertbanner{ max-width:560px; margin:clamp(2rem,4vw,2.6rem) auto 0; display:flex; align-items:center; justify-content:center; gap:.6rem; background:linear-gradient(180deg, var(--crimson-3), #8f2c1e); color:#fff; border-radius:var(--radius); padding:1rem 1.4rem; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.08em; font-weight:600; font-size:clamp(.82rem,.75rem + .4vw,1rem); opacity:0; transform:translateY(12px); transition:opacity .5s ease, transform .5s ease; }
+  .alertbanner.in{ opacity:1; transform:none; animation:bannerpulse 2s ease-in-out infinite .5s; }
+  .alertbanner svg{ width:20px; height:20px; flex:none; }
+  @keyframes bannerpulse{ 0%,100%{ box-shadow:0 0 0 rgba(0,0,0,0); } 50%{ box-shadow:0 0 26px -4px color-mix(in oklab,var(--crimson) 80%, transparent); } }
+
+  .cta.urgent{ font-size:clamp(.9rem,.82rem + .3vw,1.08rem); padding:1.15rem 2.4rem; }
+  .cta.urgent.pulse{ animation:ctaurgent 1.4s ease-in-out infinite; }
+  @keyframes ctaurgent{ 0%,100%{ transform:scale(1); box-shadow:0 12px 30px -12px color-mix(in oklab,var(--brass) 60%, transparent); } 50%{ transform:scale(1.035); box-shadow:0 16px 44px -8px color-mix(in oklab,var(--brass) 90%, transparent); } }
+
+  @media (max-width:520px){ .offerstats{ gap:.5rem; } .cnum{ padding:.45rem .5rem; } }
+  @media (prefers-reduced-motion:reduce){
+    .pbar.animate .pfill,.alertbanner.in,.cta.urgent.pulse,.cnum.secs{ animation:none; }
+    .alertbanner{ opacity:1; transform:none; }
+  }
+
+  /* ---------------- DOBRA 16: FAQ ---------------- */
+  .fold-16{ background:linear-gradient(180deg,#0E0B07,#120D08); border-top:1px solid var(--line); text-align:center; }
+  .f16-head{ margin:0 auto; max-width:26ch; font-family:var(--font-serif); font-style:italic; font-weight:600; font-size:clamp(1.4rem,1.1rem + 1.6vw,2.3rem); color:var(--text); text-wrap:balance; }
+
+  .faq{ max-width:680px; margin:clamp(2.4rem,5vw,3.4rem) auto 0; display:flex; flex-direction:column; gap:.7rem; text-align:left; }
+  .faq-item{ border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); overflow:hidden; transition:border-color .3s ease, background .3s ease; }
+  .faq-item.open{ border-color:color-mix(in oklab,var(--brass) 40%, var(--line)); background:color-mix(in oklab,var(--brass) 5%, var(--surface)); }
+  .faq-q{ width:100%; text-align:left; font:inherit; color:var(--text); background:none; border:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1.2rem 1.4rem; font-family:var(--font-body); font-weight:600; font-size:1rem; transition:color .2s ease; }
+  .faq-q:hover{ color:var(--brass); }
+  .faq-q:focus-visible{ outline:2px solid var(--brass); outline-offset:-2px; }
+  .faq-q .chev{ flex:none; width:20px; height:20px; color:var(--brass); transition:transform .3s ease; }
+  .faq-item.open .faq-q .chev{ transform:rotate(90deg); }
+  .faq-a{ max-height:0; overflow:hidden; transition:max-height .3s ease; }
+  .faq-a .inner{ padding:0 1.4rem 1.3rem; color:var(--text-muted); font-size:.98rem; line-height:1.65; opacity:0; transition:opacity .3s ease; }
+  .faq-a .inner b{ color:var(--text); font-weight:600; }
+  .faq-item.open .faq-a{ max-height:360px; }
+  .faq-item.open .faq-a .inner{ opacity:1; }
+
+  .wa-block{ max-width:560px; margin:clamp(2.4rem,5vw,3.2rem) auto 0; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); padding:clamp(1.6rem,4vw,2.2rem); text-align:center; }
+  .wa-block h3{ margin:0 0 .5rem; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.04em; font-size:1.1rem; color:var(--text); }
+  .wa-block p{ margin:0 0 1.3rem; color:var(--text-muted); font-size:.96rem; }
+  .wa-btn{ display:inline-flex; align-items:center; gap:.6rem; font-family:var(--font-display); text-transform:uppercase; letter-spacing:.1em; font-weight:600; font-size:.88rem; text-decoration:none; padding:.85rem 1.6rem; border-radius:var(--radius); background:linear-gradient(180deg, var(--sage), var(--sage-dim)); color:#0c140e; transition:transform .16s ease, filter .2s ease; }
+  .wa-btn:hover{ transform:translateY(-2px); filter:brightness(1.06); }
+  .wa-btn svg{ width:20px; height:20px; }
+
+  @media (prefers-reduced-motion:reduce){ .faq-a,.faq-q .chev{ transition:none; } }
+
+  /* ---------------- DOBRA 17: FECHAMENTO + RODAPÉ ---------------- */
+  .fold-17{
+    text-align:center; border-top:1px solid var(--line);
+    background:
+      radial-gradient(70% 50% at 50% 4%, color-mix(in oklab, var(--brass) 14%, transparent), transparent 60%),
+      linear-gradient(180deg, #100C08, #0B0705);
+  }
+  .closing-copy{ max-width:52ch; margin:0 auto; display:flex; flex-direction:column; gap:1.6rem; }
+  .creveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+  .creveal.in{ opacity:1; transform:none; }
+  .c-open{ font-family:var(--font-serif); font-size:clamp(1.2rem,1rem + .9vw,1.65rem); line-height:1.45; color:var(--text); }
+  .c-open .muted{ color:var(--text-muted); }
+  .c-mid{ font-family:var(--font-display); text-transform:uppercase; font-weight:600; line-height:1.2; letter-spacing:.01em; font-size:clamp(1.2rem,1rem + 1.1vw,1.75rem); color:var(--text); }
+  .c-mid .hl-green{ color:var(--sage); }
+  .c-mid .hl-red{ color:var(--crimson-3); }
+
+  .diffbox{ max-width:480px; margin:clamp(2.4rem,5vw,3.4rem) auto 0; border:1px solid color-mix(in oklab,var(--sage) 40%, var(--line)); border-radius:var(--radius); background:color-mix(in oklab,var(--sage) 7%, var(--bg)); padding:clamp(1.8rem,4vw,2.4rem); opacity:0; transform:translateY(22px); transition:opacity .6s ease, transform .6s ease; }
+  .diffbox.in{ opacity:1; transform:none; }
+  .diffbox .dbig{ font-family:var(--font-display); text-transform:uppercase; font-weight:700; line-height:1; font-size:clamp(1.8rem,1.2rem + 2.6vw,2.8rem); color:var(--text); }
+  .diffbox .dbig b{ color:var(--sage); }
+  .diffbox .dsub{ margin-top:.6rem; font-family:var(--font-serif); font-style:italic; font-size:clamp(1.05rem,1rem + .5vw,1.3rem); color:var(--text-muted); }
+
+  .cta.w70{ width:min(70%,420px); justify-content:center; }
+
+  /* rodapé */
+  .site-footer{ margin-top:clamp(3rem,7vw,5rem); padding-top:clamp(2.4rem,5vw,3.4rem); border-top:1px solid var(--line); display:flex; flex-direction:column; align-items:center; gap:1rem; }
+  .site-footer .flogo{ display:flex; align-items:center; gap:.8rem; }
+  .site-footer .flogo svg{ width:44px; height:44px; }
+  .site-footer .fwordmark{ font-family:var(--font-display); text-transform:uppercase; letter-spacing:.24em; font-size:.82rem; color:var(--text); padding-left:.24em; }
+  .site-footer .flink{ font-family:var(--font-body); font-size:.9rem; color:var(--brass); text-decoration:none; border-bottom:1px solid color-mix(in oklab,var(--brass) 40%, transparent); }
+  .site-footer .flink:hover{ color:var(--brass-bright); }
+  .site-footer .legal{ margin-top:.6rem; max-width:60ch; font-size:.72rem; line-height:1.6; color:var(--text-muted); }
+  .site-footer .legal a{ color:var(--text-muted); text-decoration:underline; }
+  .site-footer .legal a:hover{ color:var(--brass); }
+  .site-footer .disclaimer{ opacity:.75; }
+
+  @media (prefers-reduced-motion:reduce){ .creveal,.diffbox{ opacity:1; transform:none; transition:none; } }
+</style>
+
+<section class="hero">
+  <div class="hero-inner">
+
+    <!-- LOGO -->
+    <div class="logo">
+      <svg viewBox="0 0 200 200" role="img" aria-label="Protocolo Capilar JL">
+        <defs>
+          <path id="arcTop" d="M 42 108 A 62 62 0 0 1 158 108" fill="none"/>
+        </defs>
+        <circle cx="100" cy="100" r="86" fill="none" stroke="#CBA24E" stroke-width="2"/>
+        <circle cx="100" cy="100" r="78" fill="none" stroke="#CBA24E" stroke-width="0.9" opacity="0.7"/>
+        <!-- texto curvo em cima -->
+        <text font-family="Oswald, 'Arial Narrow', sans-serif" font-size="15" letter-spacing="5"
+              fill="#CBA24E" font-weight="500">
+          <textPath href="#arcTop" startOffset="50%" text-anchor="middle">PROTOCOLO CAPILAR</textPath>
+        </text>
+        <!-- monograma JL -->
+        <text x="100" y="118" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif"
+              font-size="74" font-weight="600" font-style="italic" fill="#E6C778">JL</text>
+        <!-- navalha estilizada como divisor -->
+        <g stroke="#CBA24E" stroke-width="1.6" fill="none" stroke-linecap="round">
+          <line x1="66" y1="140" x2="126" y2="140"/>
+          <path d="M126 140 l10 -3 l-2 3 l2 3 z" fill="#CBA24E" stroke="none"/>
+        </g>
+        <!-- estrelinhas laterais -->
+        <g fill="#CBA24E">
+          <path d="M34 100 l2 4 l4 0 l-3 3 l1 4 l-4 -2 l-4 2 l1 -4 l-3 -3 l4 0 z" transform="translate(-2,-8) scale(0.7)"/>
+        </g>
+      </svg>
+      <span class="wordmark">Est. Barber Grade</span>
+    </div>
+
+    <!-- H1 -->
+    <h1>
+      Pare de lavar seu cabelo<br>com <span class="strike">sabonete</span>
+      <span class="lead">e cuide de verdade com o</span>
+      <span class="brand">Protocolo Capilar JL</span>
+    </h1>
+
+    <!-- H2 -->
+    <h2>
+      A rotina simples de banho, pós-banho e manutenção que faz qualquer cabelo masculino ficar
+      <b>macio e hidratado em 7 dias</b>. Sem produtos caros, sem frescura.
+    </h2>
+
+    <div class="divider"><span>O básico bem feito</span></div>
+
+    <!-- Sub-headline -->
+    <p class="sub">
+      Sem produto de R$ 500. Sem ritual de duas horas. Só a sequência certa, que cabe nos 10 minutos do seu banho.
+    </p>
+
+    <!-- CTA -->
+    <a class="cta" href="#metodo">Quero descobrir o método <span class="arrow">→</span></a>
+    <p class="reassure">Acesso imediato · 7 dias de garantia</p>
+
+  </div>
+
+  <div class="scrollcue" aria-hidden="true">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+  </div>
+</section>
+
+<!-- ============ DOBRA 02: DIAGNÓSTICO ============ -->
+<section class="fold fold-2" id="metodo">
+  <div class="wrap">
+
+    <h2 class="f2-head">
+      A sua rotina de banho está destruindo o seu cabelo
+      <span class="whisper">(e você não faz a menor ideia de por quê)</span>
+    </h2>
+
+    <p class="f2-intro">Se você é como a maioria dos homens, sua rotina capilar é mais ou menos assim:</p>
+
+    <div class="problem-grid">
+
+      <article class="pcard" data-i="0">
+        <span class="num">01</span>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v3l1 2v12a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V8l1-2z"/><path d="M9 12h6"/></svg>
+        <p><b>Shampoo do CR7</b>Ou pior: sabonete de barra mesmo.</p>
+      </article>
+
+      <article class="pcard" data-i="1">
+        <span class="num">02</span>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20c1-3 2-4 2-7M18 20c-1-3-2-4-2-7"/><path d="M8 8c1-2 2.5-3 4-3s3 1 4 3"/><path d="M7 10l2 1M17 10l-2 1M12 6v3"/></svg>
+        <p><b>Esfrega com força</b>Igual quem tá lavando o corpo.</p>
+      </article>
+
+      <article class="pcard" data-i="2">
+        <span class="num">03</span>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3-2 4-2 7a2 2 0 0 0 4 0c0-1-.5-2-.5-3 2 1 3.5 3 3.5 6a5 5 0 0 1-10 0c0-4 3-5 5-10z"/></svg>
+        <p><b>Água quente</b>Pra "abrir os poros".</p>
+      </article>
+
+      <article class="pcard" data-i="3">
+        <span class="num">04</span>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M4 9h16M8 5v4"/></svg>
+        <p><b>Toalha no esfregão</b>Igual tá secando o corpo.</p>
+      </article>
+
+      <article class="pcard" data-i="4">
+        <span class="num">05</span>
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11V6a1.5 1.5 0 0 1 3 0v4m0 0V4.5a1.5 1.5 0 0 1 3 0V10m0 0V6a1.5 1.5 0 0 1 3 0v6c0 4-2 7-6 7s-6-2-6-6v-1a1.5 1.5 0 0 1 3 0"/></svg>
+        <p><b>Passa os dedos</b>E acha que cuidou.</p>
+      </article>
+
+    </div>
+
+    <div class="alert-box">
+      <span class="q" id="typeTarget" data-text="&ldquo;meu cabelo é uma bosta mesmo&rdquo;"></span>
+    </div>
+
+    <div class="closing">
+      <p>Mas a resposta é simples: <strong>você só não sabe lavar o cabelo do jeito certo</strong>. E tá tudo bem. Provavelmente seu pai também não sabia, seu barbeiro nunca teve tempo de explicar, e o pote de shampoo do mercado não vem com manual de instruções.</p>
+      <p>O resultado você conhece: fica tudo ressecado, cheio de frizz, o couro cabeludo coçando, oleoso na raiz e seco nas pontas. Seu cabelo parece uma bucha. A boa notícia é que a gente resolve isso com o <span class="hl">Protocolo JL</span>.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ DOBRA 03: ZONA DE PERIGO ============ -->
+<section class="fold fold-3">
+  <div class="wrap">
+
+    <div class="f3-head">
+      <span class="alert-tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>
+        Alerta
+      </span>
+      <h2>E não é só estética. <span class="wt">Seu couro cabeludo precisa de mais cuidado.</span></h2>
+    </div>
+
+    <p class="f3-lead">Você pode achar que o problema é só o cabelo feio no espelho. A coisa vai muito mais além do que você imagina.</p>
+    <p class="f3-lead strong">Veja o que acontece quando você mantém essa rotina destrutiva dia após dia:</p>
+
+    <ol class="timeline" role="list">
+      <span class="tl-track" aria-hidden="true"></span>
+      <span class="tl-fill" id="tlFill" aria-hidden="true"></span>
+
+      <li class="tl-item">
+        <span class="tl-node" aria-hidden="true"></span>
+        <article class="dcard">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg> Queda de cabelo precoce</h3>
+          <p>Esfregar o couro cabeludo com força e água quente danifica os folículos. <em>Aqueles fios que caem no ralo do banho não voltam tão fácil assim.</em></p>
+        </article>
+      </li>
+
+      <li class="tl-item">
+        <span class="tl-node" aria-hidden="true"></span>
+        <article class="dcard">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg> Caspa e descamação</h3>
+          <p>O couro ressecado produz mais oleosidade pra se defender, e isso vira caspa. Aí você coça, irrita ainda mais, e o ciclo não para.</p>
+        </article>
+      </li>
+
+      <li class="tl-item">
+        <span class="tl-node" aria-hidden="true"></span>
+        <article class="dcard">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg> Ressecamento crônico</h3>
+          <p>Com o tempo, o cabelo perde a capacidade natural de reter hidratação. Fica seco, quebradiço e sem brilho. <em>Não importa o quanto você hidrate depois: o estrago do banho já tá feito.</em></p>
+        </article>
+      </li>
+
+      <li class="tl-item">
+        <span class="tl-node" aria-hidden="true"></span>
+        <article class="dcard">
+          <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg> Cabelo que não segura formato</h3>
+          <p>Nem pente, nem produto, nem barbeiro salva. O fio danificado não responde a nada. Você sai da barbearia com o cabelo certo e dois dias depois ele voltou pro mesmo aspecto de abandono.</p>
+        </article>
+      </li>
+    </ol>
+
+    <div class="danger-block">
+      <p>Cada banho errado é uma camada de dano que você acumula. E você só percebe meses depois, quando o cabelo já tá sem jeito e você não entende por quê.</p>
+      <p><b>Quanto mais tempo você demora pra corrigir isso, mais difícil fica de recuperar.</b></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ DOBRA 04: A CULPA NÃO É SUA ============ -->
+<section class="fold fold-4">
+  <div class="wrap f4-grid">
+
+    <div class="f4-text">
+      <h2 class="f4-head">
+        Mas relaxa. A culpa não é sua.
+        <span class="soft">Ninguém nunca te ensinou isso direito.</span>
+      </h2>
+
+      <p class="f4-lead">Pensa comigo:</p>
+
+      <ul class="cadence">
+        <li data-i="0">Aprendeu a <b>trocar um pneu</b>? Alguém ensinou.</li>
+        <li data-i="1">Aprendeu a <b>fazer a barba</b>? Alguém mostrou.</li>
+        <li data-i="2">Aprendeu a <b>escovar o dente</b>? Alguém ficou em cima.</li>
+      </ul>
+
+      <div class="punch">
+        <span class="big">Quem te ensinou a lavar o seu cabelo?</span>
+      </div>
+
+      <p class="f4-p">Provavelmente ninguém. Você viu seu pai fazer, copiou, e segue igual até hoje.</p>
+
+      <p class="f4-p">Seu barbeiro corta, finaliza e manda você ir embora. Não tem tempo de dar aula de cuidado capilar no meio de um corte de <span class="money">R$ 50</span>. E o shampoo do mercado? Vem escrito "lave e enxágue". Pronto.</p>
+
+      <p class="f4-p"><strong>Não é que você não se importa. Você só nunca teve acesso à informação certa.</strong></p>
+
+      <p class="f4-transition">E é exatamente isso que o <span class="brand">Protocolo Capilar JL</span> faz.</p>
+    </div>
+
+    <div class="f4-media">
+      <!-- TROCAR: coloque aqui o vídeo em loop (pai e filho no banho) ou uma foto/ilustração.
+           Ex.: <video src="pai-filho.mp4" autoplay muted loop playsinline
+                        style="width:100%;height:100%;object-fit:cover"></video>
+           Mantenha o <figcaption> como legenda. -->
+      <figure>
+        <span class="tape">Prévia</span>
+        <div class="playwrap">
+          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="plabel">Vídeo · pai e filho</span>
+        </div>
+      </figure>
+      <figcaption>A gente repete o que viu em casa. Inclusive o erro.</figcaption>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ DOBRA 05: A SOLUÇÃO ============ -->
+<section class="fold fold-5">
+  <div class="wrap">
+
+    <h2 class="f5-head">
+      Conheça o Protocolo Capilar JL
+      <span class="sub">o manual que você nunca teve.</span>
+    </h2>
+
+    <!-- MOCKUP 3D (CSS) — troque a .cover por uma imagem real do produto se quiser -->
+    <div class="mock-stage">
+      <div>
+        <div class="mock-float">
+          <div class="book" aria-label="E-book Protocolo Capilar JL">
+            <div class="cover">
+              <span class="cframe"></span>
+              <span class="ckicker">Protocolo Capilar</span>
+              <span class="cmono">JL</span>
+              <span class="cbar"></span>
+              <span class="ctitle">O Manual do Cabelo</span>
+              <span class="cfoot">Barber Grade</span>
+            </div>
+          </div>
+        </div>
+        <div class="mock-shadow" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <p class="f5-intro">O Protocolo Capilar JL não é mais um monte de dica solta de YouTube. É um <b>sistema passo a passo</b>, do banho à finalização, criado especificamente pra cabelo masculino.</p>
+
+    <div class="benes">
+      <div class="bene" data-i="0">
+        <span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+        <h3>Direto ao ponto</h3>
+        <p>Sem enrolação, sem termo técnico que você precisa googlar. Você lê, aplica no próximo banho, pronto.</p>
+      </div>
+      <div class="bene" data-i="1">
+        <span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+        <h3>Feito pra homem</h3>
+        <p>Não é conteúdo de salão adaptado. É linguagem, rotina e produtos que fazem sentido pra você.</p>
+      </div>
+      <div class="bene" data-i="2">
+        <span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+        <h3>10 minutos por dia</h3>
+        <p>Não precisa mudar sua vida. O protocolo encaixa no banho que você já toma. Só muda a forma de fazer.</p>
+      </div>
+      <div class="bene" data-i="3">
+        <span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+        <h3>Funciona pra qualquer cabelo</h3>
+        <p>Liso, cacheado, crespo, oleoso, seco. O protocolo se adapta ao seu cabelo, não o contrário.</p>
+      </div>
+    </div>
+
+    <p class="promise">Em 7 dias de aplicação você já sente: cabelo mais macio, menos frizz, couro cabeludo saudável e aquele aspecto de <b>"esse cara se cuida"</b> que muda tudo.</p>
+
+    <div class="noline">
+      <span data-i="0">Sem produto de R$ 200.</span>
+      <span data-i="1">Sem ritual de 2 horas.</span>
+      <span data-i="2">Sem frescura.</span>
+    </div>
+
+    <div class="cta-wrap">
+      <a class="cta pulse" href="#comprar">Quero o protocolo completo <span class="arrow">→</span></a>
+      <div class="microcopy">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Acesso imediato</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Garantia de 7 dias</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Risco zero</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ DOBRA 06: AUTORIDADE ============ -->
+<section class="fold fold-6">
+  <div class="wrap">
+
+    <h2 class="f6-head">Quem tá te falando isso?</h2>
+
+    <div class="authors">
+
+      <!-- TROCAR: foto real do barbeiro (a .avatar recebe <img>) + nome + anos -->
+      <div class="expert">
+        <div class="avatar">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg>
+        </div>
+        <span class="ename">[ Nome do Barbeiro 1 ]</span>
+        <span class="erole">Barbeiro há [X] anos</span>
+      </div>
+
+      <blockquote class="quote">
+        <p>Nós não aprendemos isso em curso de internet. Aprendemos vendo cabelo de homem todo dia, na prática, na navalha. <span class="hl">O que tá nesse protocolo é o que a gente ensina pros nossos clientes</span> quando perguntam como cuidar do cabelo em casa. Só que agora tá organizado, passo a passo, sem você pagar R$ 200 no corte pra ouvir.</p>
+        <div class="sign">
+          <span class="sig">[ Assinatura 1 ]</span>
+          <span class="amp">&amp;</span>
+          <span class="sig">[ Assinatura 2 ]</span>
+        </div>
+      </blockquote>
+
+      <div class="expert">
+        <div class="avatar">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg>
+        </div>
+        <span class="ename">[ Nome do Barbeiro 2 ]</span>
+        <span class="erole">Barbeiro há [X] anos</span>
+      </div>
+
+    </div>
+
+    <!-- TROCAR: números reais nos data-target -->
+    <div class="stats">
+      <div class="stat"><div class="num" data-target="8000" data-suffix="+">0</div><div class="lbl">Clientes atendidos</div></div>
+      <div class="stat"><div class="num" data-target="27">0</div><div class="lbl">Anos de barbearia</div></div>
+      <div class="stat"><div class="num" data-target="12">0</div><div class="lbl">Cidades atendidas</div></div>
+      <div class="stat"><div class="num" data-target="6">0</div><div class="lbl">Tipos de cabelo</div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ DOBRA 07: O MÉTODO ============ -->
+<section class="fold fold-7">
+  <div class="wrap">
+    <h2 class="f7-head">Simples assim: 3 passos que cabem no seu banho.</h2>
+    <p class="f7-intro">Nada de ritual de 2 horas. O Protocolo Capilar JL é uma sequência simples que você faz todo dia, sem mudar sua rotina. <b>Só muda a forma.</b></p>
+  </div>
+
+  <!-- stepper -->
+  <div class="stepper">
+    <div class="track" role="tablist" aria-label="Passos do método">
+      <span class="fill" style="--p:0" aria-hidden="true"></span>
+      <button class="step active" data-step="0" aria-controls="passo1"><span class="dot">1</span><span class="name">Banho</span></button>
+      <button class="step" data-step="1" aria-controls="passo2"><span class="dot">2</span><span class="name">Pós-banho</span></button>
+      <button class="step" data-step="2" aria-controls="passo3"><span class="dot">3</span><span class="name">Manutenção</span></button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="method-panels">
+
+      <!-- PASSO 1: mídia | texto -->
+      <article class="mpanel current" id="passo1" data-step="0">
+        <div class="split">
+          <!-- TROCAR: vídeo/imagem — cara lavando o cabelo do jeito certo -->
+          <figure class="mp-media">
+            <span class="tape">Passo 1</span>
+            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+            <span class="cap">Banho · lavagem correta</span>
+          </figure>
+          <div class="mp-text">
+            <span class="mp-eyebrow">Passo 01</span>
+            <h3>Banho</h3>
+            <p>A temperatura certa da água, a quantidade de shampoo, a forma de esfregar <b>sem agredir</b> e o jeito certo de enxaguar.</p>
+            <ul class="tags">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 5 min</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c3 4 6 7 6 10a6 6 0 0 1-12 0c0-3 3-6 6-10z"/></svg> Água morna</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M9 3h6v3l1 2v12a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V8l1-2z"/><path d="M9 12h6"/></svg> Shampoo certo</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- PASSO 2: texto | mídia (invertido) -->
+      <article class="mpanel reverse" id="passo2" data-step="1">
+        <div class="split">
+          <!-- TROCAR: vídeo/imagem — cara secando o cabelo do jeito certo -->
+          <figure class="mp-media">
+            <span class="tape">Passo 2</span>
+            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+            <span class="cap">Pós-banho · secagem</span>
+          </figure>
+          <div class="mp-text">
+            <span class="mp-eyebrow">Passo 02</span>
+            <h3>Pós-banho</h3>
+            <p>A saída do banho é onde a maioria erra. Secar com toalha <b>sem esfregar</b>, o que passar e o que não passar, e como finalizar.</p>
+            <ul class="tags">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 5 min</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 5h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M4 9h16M8 5v4"/></svg> Toalha certa</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l1.6 5.4L19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-1.6z"/></svg> Finalizador (opcional)</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <!-- PASSO 3: mídia | texto -->
+      <article class="mpanel" id="passo3" data-step="2">
+        <div class="split">
+          <!-- TROCAR: vídeo/imagem — cara cuidando do cabelo pela manhã -->
+          <figure class="mp-media">
+            <span class="tape">Passo 3</span>
+            <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+            <span class="cap">Manutenção · dia a dia</span>
+          </figure>
+          <div class="mp-text">
+            <span class="mp-eyebrow">Passo 03</span>
+            <h3>Manutenção</h3>
+            <p>O que fazer nos dias sem banho, como proteger o cabelo do sol e do cloro da piscina, e quando voltar ao barbeiro.</p>
+            <ul class="tags">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> 5 min</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> Diário</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4-3 7-7 8-4-1-7-4-7-8V6z"/></svg> Proteção</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><path d="M8 8l12 8M8 16L20 8"/></svg> Barbeiro mensal</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="f7-close">Total: <b>10 minutos</b>. Todo dia. Sem desculpa.</p>
+
+    <div class="cta-wrap">
+      <a class="cta pulse" href="#comprar">Quero o protocolo completo <span class="arrow">→</span></a>
+      <div class="microcopy">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Acesso imediato</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Garantia de 7 dias</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Risco zero</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ DOBRA 08: MÓDULO 1 — O BANHO ============ -->
+<section class="fold fold-8">
+  <div class="wrap">
+
+    <span class="modpill">Módulo 1</span>
+    <h2 class="f8-head">O Banho <span class="sub">onde tudo começa (e onde tudo erra).</span></h2>
+    <p class="f8-intro">O banho é a base de tudo. Se você lava errado, <b>nenhum produto do mundo salva</b>. Nesse módulo você aprende o que fazer, e o que parar de fazer, nos 5 minutos que já passa debaixo da água.</p>
+
+    <!-- SLIDER ANTES/DEPOIS — TROCAR os fundos .ba-before/.ba-after por <img> reais -->
+    <div class="ba" id="baSlider">
+      <div class="ba-layer ba-after"><span class="hair"></span></div>
+      <div class="ba-layer ba-before"><span class="hair"></span></div>
+      <span class="ba-tag left">Antes</span>
+      <span class="ba-tag right">Depois</span>
+      <span class="ba-cap left">Ressecado, sem forma</span>
+      <span class="ba-cap right">Macio, com brilho</span>
+      <span class="ba-hint">Arrasta</span>
+      <div class="ba-handle" id="baHandle">
+        <span class="ba-grip" role="slider" tabindex="0" aria-label="Comparar antes e depois" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg>
+        </span>
+      </div>
+    </div>
+
+    <div class="learn">
+      <h3>O que você aprende nesse módulo</h3>
+      <ul>
+        <li data-i="0">
+          <span class="lic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M14 14V5a2 2 0 0 0-4 0v9a4 4 0 1 0 4 0z"/></svg></span>
+          <b>Temperatura certa da água</b>
+          <p>Água quente é o pior inimigo do seu cabelo. Aprenda a temperatura ideal.</p>
+        </li>
+        <li data-i="1">
+          <span class="lic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M9 3h6v3l1 2v12a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V8l1-2z"/><path d="M9 12h6"/></svg></span>
+          <b>Quantidade de shampoo</b>
+          <p>É menos do que você acha. Muito menos.</p>
+        </li>
+        <li data-i="2">
+          <span class="lic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11V6a1.5 1.5 0 0 1 3 0v4m0 0V4.5a1.5 1.5 0 0 1 3 0V10m0 0V6a1.5 1.5 0 0 1 3 0v6c0 4-2 7-6 7s-6-2-6-6v-1a1.5 1.5 0 0 1 3 0"/></svg></span>
+          <b>Forma correta de esfregar</b>
+          <p>Pontas dos dedos, não palma da mão. Massagem, não agressão.</p>
+        </li>
+        <li data-i="3">
+          <span class="lic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c3 4 6 7 6 10a6 6 0 0 1-12 0c0-3 3-6 6-10z"/></svg></span>
+          <b>Enxágue sem resíduo</b>
+          <p>É aqui que a maioria preguiça e o estrago acontece.</p>
+        </li>
+        <li data-i="4">
+          <span class="lic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="18" cy="21" r="1"/><path d="M3 4h2l2 12h11l2-8H6"/></svg></span>
+          <b>Shampoo certo sem gastar fortuna</b>
+          <p>Como ler o rótulo e escolher o certo no mercado.</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="formats">
+      <div class="fmt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>5 min</b>por dia</span></div>
+      <div class="fmt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg><span><b>3 vídeos</b>+ áudios</span></div>
+      <div class="fmt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg><span><b>1 PDF</b>resumo rápido</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ DOBRA 09: MÓDULO 2 — PÓS-BANHO ============ -->
+<section class="fold fold-9">
+  <div class="wrap">
+
+    <span class="modpill">Módulo 2</span>
+    <h2 class="f8-head">Pós-Banho <span class="sub">onde o cabelo nasce ou morre.</span></h2>
+    <p class="f8-intro">Você sai do banho, pega a toalha e esfrega igual tá polindo carro. É exatamente aí que o cabelo arruma arrepio. O pós-banho são os <b>5 minutos mais importantes</b> do seu dia capilar, e quase ninguém faz direito.</p>
+
+    <!-- cards expansíveis: hover no desktop, tap no mobile, um aberto por vez.
+         REVISAR os textos dos cards 2 a 6 (rascunho) -->
+    <div class="mgrid">
+
+      <button class="mcard" type="button" aria-expanded="false">
+        <span class="mc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 5h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M4 9h16M8 5v4"/></svg></span>
+        <span class="mc-title">Toalha certa</span>
+        <span class="mc-body"><p>Esquece esfregar. O certo é <span class="k">apertar</span> a toalha contra o cabelo, sem movimento lateral. Pressão absorve a água, fricção arrepia o fio. Parece detalhe bobo, mas é o motivo número 1 de frizz no cabelo masculino.</p></span>
+        <span class="mc-more">Toque para ver +</span>
+      </button>
+
+      <button class="mcard" type="button" aria-expanded="false">
+        <span class="mc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11V6a1.5 1.5 0 0 1 3 0v4m0 0V4.5a1.5 1.5 0 0 1 3 0V10m0 0V6a1.5 1.5 0 0 1 3 0v6c0 4-2 7-6 7s-6-2-6-6v-1a1.5 1.5 0 0 1 3 0"/></svg></span>
+        <span class="mc-title">Secagem sem agressão</span>
+        <span class="mc-body"><p>Deixe o cabelo secar <span class="k">no tempo dele</span>. Secador só no morno e a distância, nunca quente colado. Cabelo molhado é fio frágil: quanto menos você mexe, menos ele quebra.</p></span>
+        <span class="mc-more">Toque para ver +</span>
+      </button>
+
+      <button class="mcard" type="button" aria-expanded="false">
+        <span class="mc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M6 6l12 12"/></svg></span>
+        <span class="mc-title">Proibido na cabeça</span>
+        <span class="mc-body"><p>Toalha em turbante torcendo, dormir com o cabelo encharcado e pente de dente fino no molhado. <span class="k">Três coisas que você faz sem perceber</span> e que arrebentam o fio.</p></span>
+        <span class="mc-more">Toque para ver +</span>
+      </button>
+
+      <button class="mcard" type="button" aria-expanded="false">
+        <span class="mc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c3 4 6 7 6 10a6 6 0 0 1-12 0c0-3 3-6 6-10z"/></svg></span>
+        <span class="mc-title">Creme, leave-in ou óleo</span>
+        <span class="mc-body"><p>Cada cabelo pede um. <span class="k">Liso oleoso</span> quase não precisa, <span class="k">cacheado e crespo</span> agradecem o leave-in, óleo é pra pontas. O módulo te diz qual é o seu.</p></span>
+        <span class="mc-more">Toque para ver +</span>
+      </button>
+
+      <button class="mcard" type="button" aria-expanded="false">
+        <span class="mc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l1.6 5.4L19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-1.6z"/></svg></span>
+        <span class="mc-title">Finalizador de verdade</span>
+        <span class="mc-body"><p>Pomada e gel duro não são finalizador de cuidado, são acabamento de corte. <span class="k">A quantidade certa é ridícula de pequena</span>. Te mostro o que usar pra segurar sem virar capacete.</p></span>
+        <span class="mc-more">Toque para ver +</span>
+      </button>
+
+      <button class="mcard" type="button" aria-expanded="false">
+        <span class="mc-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg></span>
+        <span class="mc-title">Ler rótulo sem ser engenheiro</span>
+        <span class="mc-body"><p>Você não precisa decorar química. <span class="k">3 palavras pra fugir</span> e 2 pra procurar. Com isso você já escolhe melhor que 90% dos homens no corredor do mercado.</p></span>
+        <span class="mc-more">Toque para ver +</span>
+      </button>
+
+    </div>
+
+    <div class="formats">
+      <div class="fmt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>5 min</b>por dia</span></div>
+      <div class="fmt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg><span><b>4 vídeos</b>+ áudios</span></div>
+      <div class="fmt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 13l1.5 1.5L14 11"/></svg><span><b>1 PDF</b>checklist de pós-banho</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ DOBRA 10: MÓDULO 3 — MANUTENÇÃO ============ -->
+<section class="fold fold-10">
+  <div class="wrap">
+
+    <span class="modpill">Módulo 3</span>
+    <h2 class="f8-head">Manutenção <span class="sub">o que fazer quando você não tá no banho.</span></h2>
+    <p class="f8-intro">O banho são 10 minutos. E as outras 23 horas e 50 minutos do seu dia? É aí que o cabelo vive de verdade. Nesse módulo você aprende a manter o cabelo saudável entre um banho e outro. <b>Sem obsessão, sem espelho de 10 em 10 minutos, sem virar um cara carregado.</b></p>
+
+    <div class="checklist2">
+      <div class="ci" data-i="0">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 9-10"/></svg></span>
+        <b>Hidratação semanal</b>
+        <p>Uma vez por semana, 10 minutos a mais no banho. Qual máscara usar, como aplicar e quando não fazer.</p>
+      </div>
+      <div class="ci" data-i="1">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 9-10"/></svg></span>
+        <b>Proteção do sol e calor</b>
+        <p>Sim, sol queima cabelo. O que usar na praia, na piscina e no dia a dia pra o fio não ressecar.</p>
+      </div>
+      <div class="ci" data-i="2">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 9-10"/></svg></span>
+        <b>Dormir sem quebrar o cabelo</b>
+        <p>A fricção do travesseiro amassa e quebra o fio a noite toda. Tem um truque simples (e grátis) pra evitar isso.</p>
+      </div>
+      <div class="ci" data-i="3">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 9-10"/></svg></span>
+        <b>Dia sem banho: o que fazer</b>
+        <p>Nem todo dia você precisa lavar. O que fazer nos dias sem banho pra manter o cabelo com cara de limpo.</p>
+      </div>
+      <div class="ci" data-i="4">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 9-10"/></svg></span>
+        <b>Quando voltar ao barbeiro</b>
+        <p>A frequência certa de corte, o que pedir e o que não deixar o barbeiro fazer no seu cabelo.</p>
+      </div>
+      <div class="ci" data-i="5">
+        <span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 9-10"/></svg></span>
+        <b>Produtos que você já tem em casa</b>
+        <p>O que funciona, o que é joguete de marketing e o que você já tem e não tá usando direito.</p>
+      </div>
+    </div>
+
+    <div class="week">
+      <h3>Rotina semanal resumida</h3>
+      <div class="days">
+        <div class="day" data-d="0"><span class="dow">Seg</span><svg class="dic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v3M12 6a5 5 0 0 1 5 5H7a5 5 0 0 1 5-5z"/><path d="M8 15v1M11 16v1M14 15v1M17 16v1"/></svg><span class="dlabel">Banho</span></div>
+        <div class="day" data-d="1"><span class="dow">Ter</span><svg class="dic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l7 7-7 7z"/><path d="M15 5v14"/></svg><span class="dlabel">Sem banho</span></div>
+        <div class="day" data-d="2"><span class="dow">Qua</span><svg class="dic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v3M12 6a5 5 0 0 1 5 5H7a5 5 0 0 1 5-5z"/><path d="M8 15v1M11 16v1M14 15v1M17 16v1"/></svg><span class="dlabel">Banho</span></div>
+        <div class="day" data-d="3"><span class="dow">Qui</span><svg class="dic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l7 7-7 7z"/><path d="M15 5v14"/></svg><span class="dlabel">Sem banho</span></div>
+        <div class="day" data-d="4"><span class="dow">Sex</span><svg class="dic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v3M12 6a5 5 0 0 1 5 5H7a5 5 0 0 1 5-5z"/><path d="M8 15v1M11 16v1M14 15v1M17 16v1"/></svg><span class="dlabel">Banho</span></div>
+        <div class="day" data-d="5"><span class="dow">Sáb</span><svg class="dic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c3 4 6 7 6 10a6 6 0 0 1-12 0c0-3 3-6 6-10z"/></svg><span class="dlabel">Hidratar</span></div>
+      </div>
+      <div class="wlegend">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 3v3M12 6a5 5 0 0 1 5 5H7a5 5 0 0 1 5-5z"/><path d="M8 15v1M11 16v1M14 15v1"/></svg> Banho com protocolo</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5l7 7-7 7z"/><path d="M15 5v14"/></svg> Dia sem banho (só manutenção)</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3c3 4 6 7 6 10a6 6 0 0 1-12 0c0-3 3-6 6-10z"/></svg> Hidratação semanal</span>
+      </div>
+    </div>
+
+    <div class="formats">
+      <div class="fmt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>5 min</b>por dia</span></div>
+      <div class="fmt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 10l6-3v10l-6-3"/></svg><span><b>5 vídeos</b>+ áudios</span></div>
+      <div class="fmt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 15h6"/></svg><span><b>1 PDF</b>calendário imprimível</span></div>
+    </div>
+
+    <div class="cta-wrap">
+      <a class="cta pulse" href="#comprar">Quero o protocolo completo <span class="arrow">→</span></a>
+      <div class="microcopy">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Acesso imediato</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Garantia de 7 dias</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Risco zero</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ DOBRA 11: PROVA — ANTES/DEPOIS ============ -->
+<section class="fold fold-11">
+  <div class="wrap">
+
+    <h2 class="f11-head">Não acredita em 7 dias? <b>Veja o que acontece.</b></h2>
+    <p class="f11-intro">Não é mágica. É técnica aplicada. Esses caras fizeram exatamente o que tá no Protocolo Capilar JL, nada mais, nada menos. Mesmo shampoo, mesma toalha, mesmo banho. Só mudou a forma de fazer.</p>
+
+    <!-- CARROSSEL — TROCAR os fundos .before2/.after2 por <img> e preencher [NOME], [IDADE] -->
+    <div class="carousel">
+      <div class="dots" id="carDots" role="tablist" aria-label="Depoimentos"></div>
+      <div class="track2" id="carTrack">
+
+        <article class="slide2">
+          <div class="ba2">
+            <div class="half before2"><span class="htag">Antes</span><span class="hcap">Ressecado, arrepiado, sem forma</span></div>
+            <div class="half after2"><span class="htag">Depois</span><span class="hcap">Macio, hidratado, com forma</span></div>
+          </div>
+          <blockquote>"7 dias. Sem mudar nada além da forma de lavar."</blockquote>
+          <div class="attr">[ Nome ], [ idade ]<span class="type">Cabelo [ tipo ]</span></div>
+          <p class="swipe">Arrasta pra ver o próximo</p>
+        </article>
+
+        <article class="slide2">
+          <div class="ba2">
+            <div class="half before2"><span class="htag">Antes</span><span class="hcap">Oleoso na raiz, seco nas pontas</span></div>
+            <div class="half after2"><span class="htag">Depois</span><span class="hcap">Equilibrado, sem frizz, brilho natural</span></div>
+          </div>
+          <blockquote>"Comecei a notar diferença no 3º dia. No 7º, era outro cabelo."</blockquote>
+          <div class="attr">[ Nome ], [ idade ]<span class="type">Cabelo [ tipo ]</span></div>
+          <p class="swipe">Arrasta pra ver o próximo</p>
+        </article>
+
+        <article class="slide2">
+          <div class="ba2">
+            <div class="half before2"><span class="htag">Antes</span><span class="hcap">Cacheado sem definição, frizz</span></div>
+            <div class="half after2"><span class="htag">Depois</span><span class="hcap">Cacheado definido, com forma</span></div>
+          </div>
+          <blockquote>"Meu cacheado nunca tinha definido assim. E sem produto de R$ 100."</blockquote>
+          <div class="attr">[ Nome ], [ idade ]<span class="type">Cabelo cacheado</span></div>
+          <p class="swipe">Arrasta pra ver o próximo</p>
+        </article>
+
+        <article class="slide2">
+          <div class="ba2">
+            <div class="half before2"><span class="htag">Antes</span><span class="hcap">Crespo, opaco, quebradiço</span></div>
+            <div class="half after2"><span class="htag">Depois</span><span class="hcap">Crespo hidratado, com brilho</span></div>
+          </div>
+          <blockquote>"Crespo também dá pra cuidar sem alisamento. Eu não acreditava."</blockquote>
+          <div class="attr">[ Nome ], [ idade ]<span class="type">Cabelo crespo</span></div>
+          <p class="swipe">Arrasta pra ver o próximo</p>
+        </article>
+
+        <article class="slide2">
+          <div class="ba2">
+            <div class="half before2"><span class="htag">Antes</span><span class="hcap">Liso sem corpo, opaco</span></div>
+            <div class="half after2"><span class="htag">Depois</span><span class="hcap">Liso com volume natural, brilho</span></div>
+          </div>
+          <blockquote>"Achei que cabelo liso não tinha pra melhorar. Tinha."</blockquote>
+          <div class="attr">[ Nome ], [ idade ]<span class="type">Cabelo liso</span></div>
+        </article>
+
+      </div>
+    </div>
+
+    <p class="f11-close">5 tipos de cabelo. 5 transformações. <b>Um único método.</b></p>
+
+    <div class="cta-wrap">
+      <a class="cta pulse" href="#comprar">Quero transformar meu cabelo <span class="arrow">→</span></a>
+      <div class="microcopy">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Acesso imediato</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Garantia de 7 dias</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Risco zero</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ DOBRA 12: DEPOIMENTOS ============ -->
+<section class="fold fold-12">
+  <div class="wrap">
+
+    <h2 class="f12-head">Não é só de antes e depois que vive um cabelo saudável. Olha o que os caras estão falando.</h2>
+    <p class="f12-intro">Depoimentos reais de homens que aplicaram o Protocolo Capilar JL. Sem filtro, sem roteiro, sem "fala isso aqui que eu te pago". Só o resultado de quem parou de lavar cabelo com sabonete e passou a fazer direito.</p>
+
+    <!-- TROCAR: fotos reais nos .tavatar e preencher [Nome], [idade], [Cidade] -->
+    <div class="masonry">
+
+      <div class="tcard">
+        <div class="thead">
+          <span class="tavatar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
+          <span class="tname">[ Nome ]<span class="city">[ idade ] · [ Cidade ]</span></span>
+        </div>
+        <div class="tstars"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg></div>
+        <blockquote>"Cara, eu lavava cabelo com sabonete igual um animal. Em 5 dias seguindo o protocolo, meu cabelo tá outra cara."</blockquote>
+      </div>
+
+      <div class="tcard">
+        <div class="thead">
+          <span class="tavatar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
+          <span class="tname">[ Nome ]<span class="city">[ idade ] · [ Cidade ]</span></span>
+        </div>
+        <div class="tstars"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg></div>
+        <blockquote>"O negócio mudou meu cabelo em 3 dias. No 7º, minha noiva perguntou se eu tinha ido no salão."</blockquote>
+      </div>
+
+      <div class="tcard">
+        <div class="thead">
+          <span class="tavatar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
+          <span class="tname">[ Nome ]<span class="city">[ idade ] · [ Cidade ]</span></span>
+        </div>
+        <div class="tstars"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg></div>
+        <blockquote>"Eu era o cara do shampoo de R$ 80. Não preciso de nada disso. O protocolo me deu o mesmo resultado."</blockquote>
+      </div>
+
+      <div class="tcard">
+        <div class="thead">
+          <span class="tavatar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
+          <span class="tname">[ Nome ]<span class="city">[ idade ] · [ Cidade ]</span></span>
+        </div>
+        <div class="tstars"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg></div>
+        <blockquote>"Sou careca de nascença, mas o pouco que tenho tava horroroso. Agora parece cabelo de gente."</blockquote>
+      </div>
+
+      <div class="tcard">
+        <div class="thead">
+          <span class="tavatar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
+          <span class="tname">[ Nome ]<span class="city">[ idade ] · [ Cidade ]</span></span>
+        </div>
+        <div class="tstars"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg></div>
+        <blockquote>"Cabelo cacheado nunca definiu assim. E sem produto de R$ 100. Só a técnica certa."</blockquote>
+      </div>
+
+      <div class="tcard">
+        <div class="thead">
+          <span class="tavatar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
+          <span class="tname">[ Nome ]<span class="city">[ idade ] · [ Cidade ]</span></span>
+        </div>
+        <div class="tstars"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg></div>
+        <blockquote>"Barbeiro há 15 anos. Achei o método simples demais pra funcionar. Funcionou mais que creme de R$ 200."</blockquote>
+      </div>
+
+      <div class="tcard">
+        <div class="thead">
+          <span class="tavatar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
+          <span class="tname">[ Nome ]<span class="city">[ idade ] · [ Cidade ]</span></span>
+        </div>
+        <div class="tstars"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg></div>
+        <blockquote>"Minha mulher pega no meu cabelo toda vez. Pela primeira vez ela disse: tá diferente!"</blockquote>
+      </div>
+
+      <div class="tcard">
+        <div class="thead">
+          <span class="tavatar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
+          <span class="tname">[ Nome ]<span class="city">[ idade ] · [ Cidade ]</span></span>
+        </div>
+        <div class="tstars"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg></div>
+        <blockquote>"Comecei cético. Achei que era furada. No 4º dia, meu cabelo tava outro."</blockquote>
+      </div>
+
+      <div class="tcard">
+        <div class="thead">
+          <span class="tavatar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
+          <span class="tname">[ Nome ]<span class="city">[ idade ] · [ Cidade ]</span></span>
+        </div>
+        <div class="tstars"><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l2.9 6.3L22 9.2l-5 4.6 1.3 6.9L12 17.8 5.7 20.7 7 13.8 2 9.2l7.1-.9z"/></svg></div>
+        <blockquote>"Achei que cabelo liso não tinha pra melhorar. No 7º dia, tinha volume e brilho que eu nunca vi."</blockquote>
+      </div>
+
+    </div>
+
+    <div class="f12-close">
+      <div class="bignum"><span class="plus" style="font-size:.42em;vertical-align:middle;letter-spacing:.06em;">mais de </span><span class="num" data-target="1157">0</span></div>
+      <span class="lbl">homens já aplicaram o protocolo</span>
+      <p class="f12-q">Você vai ser o próximo?</p>
+    </div>
+
+    <div class="cta-wrap">
+      <a class="cta pulse" href="#comprar">Quero fazer parte disso <span class="arrow">→</span></a>
+      <div class="microcopy">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Acesso imediato</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Garantia de 7 dias</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Risco zero</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ DOBRA 13: QUIZ ============ -->
+<section class="fold fold-13">
+  <div class="wrap">
+
+    <h2 class="f13-head">Esse protocolo é pra você? <span class="sub">Marca o que se aplica a você.</span></h2>
+    <p class="f13-intro">Se você marcou 2 ou mais, o Protocolo Capilar JL foi feito pra você. Se marcou todos, a gente sente muito, mas seu cabelo tá gritando por socorro.</p>
+
+    <div class="quiz" id="quiz">
+      <button class="qi" type="button" aria-pressed="false" data-i="0"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 9-10"/></svg></span><span class="qtext">Seu cabelo tá sempre arrepiado depois do banho, não importa o que você faça.</span></button>
+      <button class="qi" type="button" aria-pressed="false" data-i="1"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 9-10"/></svg></span><span class="qtext">Você usa o mesmo sabonete do corpo pra lavar a cabeça. Ou já usou.</span></button>
+      <button class="qi" type="button" aria-pressed="false" data-i="2"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 9-10"/></svg></span><span class="qtext">Seu couro cabeludo coça ou descama com frequência.</span></button>
+      <button class="qi" type="button" aria-pressed="false" data-i="3"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 9-10"/></svg></span><span class="qtext">Você passa os dedos no cabelo e acha que "tá cuidado".</span></button>
+      <button class="qi" type="button" aria-pressed="false" data-i="4"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 9-10"/></svg></span><span class="qtext">Seu cabelo parece oleoso na raiz mas seco nas pontas.</span></button>
+      <button class="qi" type="button" aria-pressed="false" data-i="5"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 9-10"/></svg></span><span class="qtext">Você não faz ideia de qual shampoo comprar e pega o mais barato (ou o da propaganda).</span></button>
+      <button class="qi" type="button" aria-pressed="false" data-i="6"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 9-10"/></svg></span><span class="qtext">Você sai da barbearia com o cabelo certo e 2 dias depois ele voltou pro mesmo aspecto.</span></button>
+      <button class="qi" type="button" aria-pressed="false" data-i="7"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 9-10"/></svg></span><span class="qtext">Ninguém nunca te ensinou como lavar seu cabelo do jeito certo.</span></button>
+    </div>
+
+    <div class="qresult">
+      <span class="qlabel">Resultado</span>
+      <div class="qscore"><span class="qnum" id="qNum">0</span><span class="qof">de 8 marcadas</span></div>
+      <p class="qmsg" id="qMsg">Marque os itens acima pra ver o diagnóstico do seu cabelo.</p>
+    </div>
+
+    <div class="cta-wrap">
+      <a class="cta pulse" href="#comprar" id="qCta">É pra mim, quero resolver <span class="arrow">→</span></a>
+      <div class="microcopy">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Acesso imediato</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Garantia de 7 dias</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Risco zero</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ DOBRA 14: NÃO É PRA TODO MUNDO ============ -->
+<section class="fold fold-14">
+  <div class="wrap">
+
+    <h2 class="f14-head">Agora, deixa eu ser honesto: isso <b>não é pra todo mundo.</b></h2>
+    <p class="f14-intro">Se você se identifica com algum item abaixo, economiza seu dinheiro. O Protocolo Capilar JL não é pra você, e tá tudo bem com isso.</p>
+
+    <div class="nofit">
+      <div class="nfi" data-i="0">
+        <span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6L18 18"/><path d="M18 6L6 18"/></svg></span>
+        <b>Você quer um produto milagroso que resolve em 1 dia</b>
+        <p>Isso é técnica aplicada, leva 7 dias. Se você não tem paciência pra 7 dias, isso não é pra você.</p>
+      </div>
+      <div class="nfi" data-i="1">
+        <span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6L18 18"/><path d="M18 6L6 18"/></svg></span>
+        <b>Você quer uma lista de produtos de R$ 300 pra comprar</b>
+        <p>O protocolo ensina a usar o que você já tem em casa. Se você quer gastar fortuna em produto, isso não é pra você.</p>
+      </div>
+      <div class="nfi" data-i="2">
+        <span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6L18 18"/><path d="M18 6L6 18"/></svg></span>
+        <b>Você não tá disposto a mudar a forma de lavar</b>
+        <p>O produto é o mesmo. O que muda é o método. Se você quer continuar esfregando igual lava chão, isso não é pra você.</p>
+      </div>
+      <div class="nfi" data-i="3">
+        <span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6L18 18"/><path d="M18 6L6 18"/></svg></span>
+        <b>Você é mulher</b>
+        <p>O protocolo foi criado especificamente pra cabelo masculino. A biologia do fio é diferente. Se você é mulher, isso não é pra você.</p>
+      </div>
+      <div class="nfi" data-i="4">
+        <span class="x"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6L18 18"/><path d="M18 6L6 18"/></svg></span>
+        <b>Você já tem rotina detalhada e o cabelo perfeito</b>
+        <p>Se você já domina temperatura, finalizador e fricção, isso não é pra você. Você não precisa.</p>
+      </div>
+    </div>
+
+    <div class="turn">
+      <p>Agora, se você não se encaixou em nenhum dos itens acima...</p>
+      <p class="big">O Protocolo Capilar JL foi feito <b>pra você.</b></p>
+    </div>
+
+    <div class="cta-wrap">
+      <a class="cta green pulse" href="#comprar">Então é pra mim, quero acessar <span class="arrow">→</span></a>
+      <div class="microcopy">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Acesso imediato</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Garantia de 7 dias</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Risco zero</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ DOBRA 15: OFERTA / ESCASSEZ ============ -->
+<!-- EDITAR os números reais em data-* e a data-limite PRAZO no <script> lá embaixo.
+     Use um prazo verdadeiro: cronômetro que reseta por visita é escassez falsa (CDC art. 37). -->
+<section class="fold fold-15">
+  <div class="wrap">
+
+    <h2 class="f15-head">Esse preço de <span class="green">R$ 47</span> é promocional. E ele <span class="red">vai subir.</span></h2>
+    <p class="f15-intro">O preço promocional é pra quem entra agora. Quando as vagas promocionais acabarem, o preço pula pra R$ 197,00 sem aviso.<span class="accent">Não é tática de vendas. É o cronograma.</span></p>
+
+    <div class="offercard">
+      <span class="oc-label">Vagas promocionais restantes</span>
+      <div class="pbar" id="pbar"><span class="pfill"></span></div>
+      <p class="pcap"><span class="big" id="statRest2">37</span> de 500 vagas</p>
+
+      <div class="offerstats">
+        <div class="ostat"><div class="on" data-from="0" data-to="463" id="statSold">0</div><div class="ol">Vendidas</div></div>
+        <div class="ostat red"><div class="on" data-from="500" data-to="37" id="statRest">500</div><div class="ol">Restantes</div></div>
+        <div class="ostat green"><div class="on">R$ 47</div><div class="ol">Hoje</div></div>
+      </div>
+    </div>
+
+    <div class="countdown">
+      <div class="clock" id="clock" aria-label="Tempo restante da oferta">
+        <div class="cunit"><span class="cnum" id="cdH">00</span><span class="clab">Horas</span></div>
+        <span class="csep">:</span>
+        <div class="cunit"><span class="cnum" id="cdM">00</span><span class="clab">Min</span></div>
+        <span class="csep">:</span>
+        <div class="cunit"><span class="cnum secs" id="cdS">00</span><span class="clab">Seg</span></div>
+      </div>
+      <p class="cwhen">Quando zerar, o preço pula pra <b>R$ 197,00</b>.</p>
+    </div>
+
+    <div class="alertbanner" id="alertBanner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>
+      Últimas 37 vagas no preço de R$ 47
+    </div>
+
+    <div class="cta-wrap">
+      <a class="cta urgent pulse" href="#comprar">Garantir minha vaga agora <span class="arrow">→</span></a>
+      <div class="microcopy">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Acesso imediato</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Pagamento único, sem assinatura</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Pix ou cartão até 12x</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ DOBRA 16: FAQ ============ -->
+<section class="fold fold-16">
+  <div class="wrap">
+
+    <h2 class="f16-head">Ainda com aquela dúvida? Deixa eu responder antes de você decidir.</h2>
+
+    <!-- acordeão: uma aberta por vez. REVISAR respostas 2 a 9 (rascunho) -->
+    <div class="faq" id="faq">
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false"><span>Preciso de produtos caros pra funcionar?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <div class="faq-a"><div class="inner">Não. O protocolo ensina a usar o que você já tem em casa. Shampoo de R$ 15 funciona, de R$ 80 também. <b>O que muda é a forma de lavar, secar e finalizar, não o produto.</b></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false"><span>Funciona pra cabelo cacheado ou crespo?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <div class="faq-a"><div class="inner">Funciona pra todos os tipos. Tem um módulo que adapta a rotina pro seu cabelo: liso, ondulado, cacheado ou crespo. Cacheado e crespo, inclusive, são os que mais sentem diferença.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false"><span>Em quanto tempo eu vejo resultado?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <div class="faq-a"><div class="inner">A maioria nota nos primeiros 3 a 5 dias. Em 7 dias de aplicação certa a diferença tá clara: mais macio, menos frizz e couro cabeludo mais saudável.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false"><span>Eu não tenho tempo. Vou conseguir?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <div class="faq-a"><div class="inner">O protocolo cabe no banho que você já toma. Não é rotina nova, é a forma certa de fazer a que você já faz. São minutos, não horas.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false"><span>Preciso de secador ou ferramentas?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <div class="faq-a"><div class="inner">Não precisa de nada. Se você quiser usar secador, te ensino o jeito certo. Mas o protocolo funciona só com as mãos e uma toalha.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false"><span>Como recebo o protocolo?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <div class="faq-a"><div class="inner">Assim que o pagamento confirma, você recebe o acesso por e-mail. Fica tudo numa área de membros: vídeos, áudios e os PDFs. Assiste do celular, quando quiser.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false"><span>É pagamento único ou assinatura?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <div class="faq-a"><div class="inner">Pagamento único. Você paga uma vez e o acesso é seu, <b>sem mensalidade, sem renovação.</b></div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false"><span>E se eu não gostar?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <div class="faq-a"><div class="inner">Você tem 7 dias de garantia. Aplicou e não curtiu? Pede o reembolso e devolvo cada centavo, sem pergunta.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false"><span>Tenho mais idade. Funciona pra mim?</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        <div class="faq-a"><div class="inner">Idade não muda a técnica. Cabelo de 18 ou de 60 responde ao cuidado certo. Se tem fio na cabeça, o protocolo cuida dele.</div></div>
+      </div>
+
+    </div>
+
+    <div class="wa-block">
+      <h3>Não achou sua dúvida?</h3>
+      <p>Manda um zap pra gente. A gente responde na hora.</p>
+      <!-- TROCAR: coloque o número real (formato 55DDDNÚMERO) -->
+      <a class="wa-btn" href="https://wa.me/5591981518141?text=Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Protocolo%20Capilar%20JL" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.8.7.8-2.7-.2-.3A8 8 0 1 1 12 20zm4.5-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.3.2-.3.5-1 .1-.1 0-.3 0-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.8.8-.8 2 0 3.2a9 9 0 0 0 3.5 3.1c1.2.5 1.7.6 2.3.5.4-.1 1.1-.5 1.3-1 .2-.4.2-.8.1-.9-.1-.1-.2-.1-.4-.2z"/></svg>
+        Falar no WhatsApp
+      </a>
+    </div>
+
+    <div class="cta-wrap">
+      <a class="cta green pulse" href="#comprar">Tô pronto, quero meu protocolo <span class="arrow">→</span></a>
+      <div class="microcopy">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Acesso imediato</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Pagamento único, sem assinatura</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Pix ou cartão até 12x</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ DOBRA 17: FECHAMENTO + RODAPÉ ============ -->
+<section class="fold fold-17" id="comprar">
+  <div class="wrap">
+
+    <div class="closing-copy">
+      <p class="creveal c-open" data-i="0">Seu cabelo é a primeira coisa que as pessoas veem quando você entra numa sala.</p>
+      <p class="creveal c-open" data-i="1">Não é vaidade, é apresentação. <span class="muted">É o cara que se cuida contra o cara que não liga.</span></p>
+      <p class="creveal c-mid" data-i="2">Você já leu até aqui. Já sabe o que tá errado e o que fazer pra corrigir.</p>
+      <p class="creveal c-mid" data-i="3">O próximo banho pode ser o primeiro da <span class="hl-green">rotina certa</span>. Ou mais um da rotina que tá <span class="hl-red">destruindo seu cabelo</span>.</p>
+    </div>
+
+    <div class="diffbox">
+      <div class="dbig">A diferença é <b>R$ 47,00</b>.</div>
+      <div class="dsub">É um investimento muito pequeno pra um resultado tão grande.</div>
+    </div>
+
+    <div class="cta-wrap">
+      <a class="cta green pulse w70" href="#checkout">Quero meu protocolo agora <span class="arrow">→</span></a>
+      <div class="microcopy">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Acesso imediato</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Pagamento único, sem assinatura</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg> Pix ou cartão até 12x</span>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="flogo">
+        <svg viewBox="0 0 200 200" role="img" aria-label="Protocolo Capilar JL">
+          <circle cx="100" cy="100" r="86" fill="none" stroke="#CBA24E" stroke-width="2"/>
+          <circle cx="100" cy="100" r="78" fill="none" stroke="#CBA24E" stroke-width="0.9" opacity="0.7"/>
+          <text x="100" y="126" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="86" font-weight="600" font-style="italic" fill="#E6C778">JL</text>
+        </svg>
+        <span class="fwordmark">Protocolo Capilar</span>
+      </div>
+      <!-- TROCAR: link do site -->
+      <a class="flink" href="https://protocolo-capilar-masculino-clean.netlify.app/" target="_blank" rel="noopener">protocolocapilarjl.com.br</a>
+      <!-- TROCAR: links reais de política/termos -->
+      <p class="legal">
+        © 2026 Protocolo Capilar JL ·
+        <a href="#">Política de Privacidade</a> · <a href="#">Termos de Uso</a><br>
+        <span class="disclaimer">Este produto não substitui acompanhamento dermatológico. Resultados variam de pessoa pra pessoa e dependem da aplicação. Não garantimos resultado idêntico ao dos depoimentos.</span>
+      </p>
+    </footer>
+
+  </div>
+</section>
+
+<script>
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* fade-in escalonado dos cards (200ms entre cada) */
+    var cards = document.querySelectorAll('.pcard');
+    if (reduce) {
+      cards.forEach(function (c) { c.classList.add('in'); });
+    } else if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            var i = parseInt(e.target.getAttribute('data-i'), 10) || 0;
+            e.target.style.transitionDelay = (i * 200) + 'ms';
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.25 });
+      cards.forEach(function (c) { io.observe(c); });
+    } else {
+      cards.forEach(function (c) { c.classList.add('in'); });
+    }
+
+    /* efeito de digitação na frase de alerta */
+    var target = document.getElementById('typeTarget');
+    if (target) {
+      var full = target.getAttribute('data-text');
+      if (reduce || !('IntersectionObserver' in window)) {
+        target.innerHTML = full;
+      } else {
+        var started = false;
+        var tio = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting && !started) {
+              started = true;
+              tio.unobserve(e.target);
+              setTimeout(typeIt, 500);
+            }
+          });
+        }, { threshold: 0.6 });
+        tio.observe(target.closest('.alert-box'));
+
+        var caret = document.createElement('span');
+        caret.className = 'caret';
+        function typeIt() {
+          var tmp = document.createElement('span');
+          tmp.innerHTML = full;
+          var chars = tmp.textContent.split('');
+          var out = '';
+          target.appendChild(caret);
+          var idx = 0;
+          (function step() {
+            if (idx >= chars.length) { return; }
+            out += chars[idx++];
+            target.textContent = out;
+            target.appendChild(caret);
+            setTimeout(step, 55);
+          })();
+        }
+      }
+    }
+
+    /* dobra 03: timeline reveal + preenchimento do trilho */
+    var tlItems = document.querySelectorAll('.tl-item');
+    var tlFill = document.getElementById('tlFill');
+    var timeline = document.querySelector('.timeline');
+    function fillTo(node) {
+      if (!tlFill || !timeline || !node) { return; }
+      var t = timeline.getBoundingClientRect();
+      var n = node.getBoundingClientRect();
+      tlFill.style.height = Math.max(0, (n.top + n.height / 2) - t.top) + 'px';
+    }
+    if (reduce) {
+      tlItems.forEach(function (it) { it.classList.add('in'); });
+      if (tlItems.length) { fillTo(tlItems[tlItems.length - 1].querySelector('.tl-node')); }
+    } else if ('IntersectionObserver' in window) {
+      var tio2 = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            fillTo(e.target.querySelector('.tl-node'));
+            tio2.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      tlItems.forEach(function (it) { tio2.observe(it); });
+    } else {
+      tlItems.forEach(function (it) { it.classList.add('in'); });
+    }
+
+    /* bloco de perigo final */
+    var danger = document.querySelector('.danger-block');
+    if (danger) {
+      if (reduce || !('IntersectionObserver' in window)) {
+        danger.classList.add('in');
+      } else {
+        var dio = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); dio.unobserve(e.target); }
+          });
+        }, { threshold: 0.3 });
+        dio.observe(danger);
+      }
+    }
+
+    /* helper genérico de reveal ao entrar na tela */
+    function onView(el, thr, cb) {
+      if (!el) { return; }
+      if (reduce || !('IntersectionObserver' in window)) { cb(el); return; }
+      var o = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { cb(e.target); o.unobserve(e.target); }
+        });
+      }, { threshold: thr });
+      o.observe(el);
+    }
+
+    /* dobra 04: lista cadenciada (150ms entre itens) */
+    var cad = document.querySelectorAll('.cadence li');
+    cad.forEach(function (li) {
+      onView(li, 0.6, function (t) {
+        var i = parseInt(t.getAttribute('data-i'), 10) || 0;
+        t.style.transitionDelay = (i * 150) + 'ms';
+        t.classList.add('in');
+      });
+    });
+
+    /* dobra 04: punch-in + transição */
+    onView(document.querySelector('.punch'), 0.5, function (t) { t.classList.add('in'); });
+    onView(document.querySelector('.f4-transition'), 0.6, function (t) { t.classList.add('in'); });
+
+    /* dobra 05: mockup 3D, bullets, promessa, staccato */
+    onView(document.querySelector('.mock-stage'), 0.3, function (t) { t.classList.add('in'); });
+
+    document.querySelectorAll('.bene').forEach(function (b) {
+      onView(b, 0.5, function (t) {
+        var i = parseInt(t.getAttribute('data-i'), 10) || 0;
+        t.style.transitionDelay = (i * 200) + 'ms';
+        var chk = t.querySelector('.chk');
+        if (chk) { chk.style.animationDelay = (i * 200) + 'ms'; }
+        t.classList.add('in');
+      });
+    });
+
+    onView(document.querySelector('.promise'), 0.4, function (t) { t.classList.add('in'); });
+
+    document.querySelectorAll('.noline span').forEach(function (s) {
+      onView(s, 0.7, function (t) {
+        var i = parseInt(t.getAttribute('data-i'), 10) || 0;
+        t.style.transitionDelay = (i * 100) + 'ms';
+        t.classList.add('in');
+      });
+    });
+
+    /* dobra 06: fotos com zoom + contadores */
+    document.querySelectorAll('.expert').forEach(function (ex) {
+      onView(ex, 0.4, function (t) { t.classList.add('in'); });
+    });
+
+    function fmt(n) { return Math.round(n).toLocaleString('pt-BR'); }
+    function countUp(el, delay) {
+      var target = parseFloat(el.getAttribute('data-target')) || 0;
+      var suffix = el.getAttribute('data-suffix') || '';
+      if (reduce) { el.textContent = fmt(target) + suffix; return; }
+      var duration = 1500, start = null;
+      setTimeout(function () {
+        function tick(ts) {
+          if (start === null) { start = ts; }
+          var p = Math.min((ts - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = fmt(target * eased) + suffix;
+          if (p < 1) { requestAnimationFrame(tick); }
+        }
+        requestAnimationFrame(tick);
+      }, delay);
+    }
+    var statsWrap = document.querySelector('.stats');
+    if (statsWrap) {
+      onView(statsWrap, 0.4, function () {
+        var nums = statsWrap.querySelectorAll('.num');
+        nums.forEach(function (n, i) { countUp(n, i * 200); });
+      });
+    }
+
+    /* dobra 07: método (stepper + painéis) */
+    var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.mpanel'));
+    var fill = document.querySelector('.track .fill');
+
+    panels.forEach(function (p) {
+      onView(p, 0.2, function (t) { t.classList.add('in'); });
+    });
+
+    function setActive(idx) {
+      steps.forEach(function (s, i) { s.classList.toggle('active', i === idx); });
+      panels.forEach(function (p, i) { p.classList.toggle('current', i === idx); });
+      if (fill) { fill.style.setProperty('--p', idx / (steps.length - 1)); }
+    }
+
+    steps.forEach(function (s) {
+      s.addEventListener('click', function () {
+        var idx = parseInt(s.getAttribute('data-step'), 10) || 0;
+        setActive(idx);
+        var panel = panels[idx];
+        if (panel) { panel.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' }); }
+      });
+    });
+
+    /* scroll-spy: destaca o passo do painel mais visível */
+    if ('IntersectionObserver' in window) {
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting && e.intersectionRatio >= 0.5) {
+            var idx = parseInt(e.target.getAttribute('data-step'), 10) || 0;
+            setActive(idx);
+          }
+        });
+      }, { threshold: [0.5], rootMargin: '-90px 0px -35% 0px' });
+      panels.forEach(function (p) { spy.observe(p); });
+    }
+
+    /* dobra 08: lista do módulo + slider antes/depois */
+    document.querySelectorAll('.learn li').forEach(function (li) {
+      onView(li, 0.5, function (t) {
+        var i = parseInt(t.getAttribute('data-i'), 10) || 0;
+        t.style.transitionDelay = (i * 150) + 'ms';
+        var ic = t.querySelector('.lic');
+        if (ic) { ic.style.animationDelay = (i * 150) + 'ms'; }
+        t.classList.add('in');
+      });
+    });
+
+    var ba = document.getElementById('baSlider');
+    if (ba) {
+      var grip = ba.querySelector('.ba-grip');
+      var dragging = false;
+      function setPos(clientX) {
+        var r = ba.getBoundingClientRect();
+        var p = ((clientX - r.left) / r.width) * 100;
+        p = Math.max(0, Math.min(100, p));
+        ba.style.setProperty('--pos', p + '%');
+        if (grip) { grip.setAttribute('aria-valuenow', Math.round(p)); }
+      }
+      ba.addEventListener('pointerdown', function (e) {
+        dragging = true; ba.setPointerCapture(e.pointerId); setPos(e.clientX);
+      });
+      ba.addEventListener('pointermove', function (e) { if (dragging) { setPos(e.clientX); } });
+      ba.addEventListener('pointerup', function () { dragging = false; });
+      ba.addEventListener('pointercancel', function () { dragging = false; });
+      if (grip) {
+        grip.addEventListener('keydown', function (e) {
+          var cur = parseFloat(grip.getAttribute('aria-valuenow')) || 50;
+          if (e.key === 'ArrowLeft') { cur -= 3; }
+          else if (e.key === 'ArrowRight') { cur += 3; }
+          else { return; }
+          e.preventDefault();
+          cur = Math.max(0, Math.min(100, cur));
+          ba.style.setProperty('--pos', cur + '%');
+          grip.setAttribute('aria-valuenow', Math.round(cur));
+        });
+      }
+    }
+
+    /* dobra 09: cards expansíveis (acordeão, um aberto por vez) */
+    var mcards = Array.prototype.slice.call(document.querySelectorAll('.mcard'));
+    mcards.forEach(function (c, i) {
+      onView(c, 0.25, function (t) {
+        t.style.transitionDelay = ((i % 3) * 90) + 'ms';
+        t.classList.add('in');
+      });
+      c.addEventListener('click', function () {
+        var isOpen = c.classList.contains('open');
+        mcards.forEach(function (o) { o.classList.remove('open'); o.setAttribute('aria-expanded', 'false'); });
+        if (!isOpen) { c.classList.add('open'); c.setAttribute('aria-expanded', 'true'); }
+      });
+    });
+
+    /* dobra 10: checklist auto-marca (200ms entre itens) */
+    document.querySelectorAll('.ci').forEach(function (ci) {
+      onView(ci, 0.5, function (t) {
+        var i = parseInt(t.getAttribute('data-i'), 10) || 0;
+        setTimeout(function () { t.classList.add('checked'); }, reduce ? 0 : i * 200);
+      });
+    });
+
+    /* dobra 10: calendário acende dia a dia */
+    var week = document.querySelector('.week');
+    if (week) {
+      onView(week, 0.35, function () {
+        var days = week.querySelectorAll('.day');
+        days.forEach(function (d, i) {
+          setTimeout(function () { d.classList.add('lit'); }, reduce ? 0 : i * 180);
+        });
+      });
+    }
+
+    /* dobra 11: carrossel */
+    var track = document.getElementById('carTrack');
+    var dotsWrap = document.getElementById('carDots');
+    if (track && dotsWrap) {
+      var slides = Array.prototype.slice.call(track.querySelectorAll('.slide2'));
+      var dots = slides.map(function (s, i) {
+        var b = document.createElement('button');
+        b.className = 'dot2' + (i === 0 ? ' active' : '');
+        b.type = 'button';
+        b.setAttribute('role', 'tab');
+        b.setAttribute('aria-label', 'Depoimento ' + (i + 1));
+        b.addEventListener('click', function () {
+          track.scrollTo({ left: i * track.clientWidth, behavior: reduce ? 'auto' : 'smooth' });
+        });
+        dotsWrap.appendChild(b);
+        return b;
+      });
+
+      function syncDots() {
+        var idx = Math.round(track.scrollLeft / track.clientWidth);
+        dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+      }
+      var raf = null;
+      track.addEventListener('scroll', function () {
+        if (raf) { return; }
+        raf = requestAnimationFrame(function () { syncDots(); raf = null; });
+      });
+
+      /* arrastar com mouse no desktop */
+      var down = false, startX = 0, startScroll = 0, moved = false;
+      track.addEventListener('pointerdown', function (e) {
+        if (e.pointerType === 'touch') { return; }
+        down = true; moved = false; startX = e.clientX; startScroll = track.scrollLeft;
+        track.classList.add('dragging');
+      });
+      track.addEventListener('pointermove', function (e) {
+        if (!down) { return; }
+        var dx = e.clientX - startX;
+        if (Math.abs(dx) > 4) { moved = true; }
+        track.scrollLeft = startScroll - dx;
+      });
+      function endDrag() {
+        if (!down) { return; }
+        down = false; track.classList.remove('dragging');
+        var idx = Math.round(track.scrollLeft / track.clientWidth);
+        track.scrollTo({ left: idx * track.clientWidth, behavior: reduce ? 'auto' : 'smooth' });
+      }
+      track.addEventListener('pointerup', endDrag);
+      track.addEventListener('pointerleave', endDrag);
+      track.querySelectorAll('a,blockquote').forEach(function (el) {
+        el.addEventListener('click', function (e) { if (moved) { e.preventDefault(); } });
+      });
+    }
+
+    /* dobra 12: masonry reveal + contador +200 + pergunta */
+    document.querySelectorAll('.tcard').forEach(function (c, i) {
+      onView(c, 0.2, function (t) {
+        t.style.transitionDelay = ((i % 3) * 80) + 'ms';
+        t.classList.add('in');
+      });
+    });
+    var bignum = document.querySelector('.f12-close .num');
+    if (bignum) { onView(bignum, 0.6, function (t) { countUp(t, 0); }); }
+    onView(document.querySelector('.f12-q'), 0.6, function (t) {
+      setTimeout(function () { t.classList.add('in'); }, reduce ? 0 : 900);
+    });
+
+    /* dobra 13: quiz */
+    var quiz = document.getElementById('quiz');
+    if (quiz) {
+      var qis = Array.prototype.slice.call(quiz.querySelectorAll('.qi'));
+      var qNum = document.getElementById('qNum');
+      var qMsg = document.getElementById('qMsg');
+      var qCta = document.getElementById('qCta');
+
+      function result(n) {
+        if (n <= 1) { return { msg: 'Cabelo praticamente em dia. Uns ajustes finos e ele fica impecável.', cta: 'Quero deixar impecável' }; }
+        if (n <= 3) { return { msg: 'Tem alguns pontos pra corrigir. Nada grave, mas o protocolo resolve rápido.', cta: 'Quero corrigir isso' }; }
+        if (n <= 5) { return { msg: 'Seu cabelo precisa de atenção. Você tá acumulando dano a cada banho.', cta: 'Quero resolver agora' }; }
+        return { msg: 'Seu cabelo tá gritando por socorro. A boa notícia: dá pra resolver em 7 dias, a partir do próximo banho.', cta: 'É pra mim, quero resolver' };
+      }
+      function updateQuiz(animateArrow) {
+        var n = qis.filter(function (q) { return q.classList.contains('checked'); }).length;
+        if (qNum) { qNum.textContent = n; }
+        var r = result(n);
+        if (qMsg) { qMsg.textContent = r.msg; }
+        if (qCta) { qCta.innerHTML = r.cta + ' <span class="arrow">→</span>'; }
+      }
+
+      qis.forEach(function (q) {
+        q.addEventListener('click', function () {
+          var on = q.classList.toggle('checked');
+          q.setAttribute('aria-pressed', on ? 'true' : 'false');
+          updateQuiz();
+        });
+      });
+
+      /* auto-marca ao entrar na tela (200ms entre itens), como diagnóstico */
+      var started13 = false;
+      onView(quiz, 0.3, function () {
+        if (started13) { return; }
+        started13 = true;
+        qis.forEach(function (q, i) {
+          setTimeout(function () {
+            if (!q.classList.contains('checked')) {
+              q.classList.add('checked');
+              q.setAttribute('aria-pressed', 'true');
+              updateQuiz();
+            }
+          }, reduce ? 0 : i * 200);
+        });
+      });
+    }
+
+    /* dobra 14: X se desenha (200ms entre itens) + virada */
+    document.querySelectorAll('.nfi').forEach(function (nf) {
+      onView(nf, 0.5, function (t) {
+        var i = parseInt(t.getAttribute('data-i'), 10) || 0;
+        setTimeout(function () { t.classList.add('crossed'); }, reduce ? 0 : i * 200);
+      });
+    });
+    onView(document.querySelector('.turn'), 0.4, function (t) { t.classList.add('in'); });
+
+    /* dobra 15: oferta / escassez */
+    function animateCount(el, from, to, delay) {
+      if (!el) { return; }
+      if (reduce) { el.textContent = fmt(to); return; }
+      var duration = 1500, start = null;
+      setTimeout(function () {
+        function tick(ts) {
+          if (start === null) { start = ts; }
+          var p = Math.min((ts - start) / duration, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = fmt(from + (to - from) * eased);
+          if (p < 1) { requestAnimationFrame(tick); }
+        }
+        requestAnimationFrame(tick);
+      }, delay);
+    }
+
+    var offercard = document.querySelector('.offercard');
+    if (offercard) {
+      onView(offercard, 0.3, function () {
+        var pbar = document.getElementById('pbar');
+        if (pbar) { pbar.classList.add('animate'); }
+        animateCount(document.getElementById('statSold'), 0, 463, 0);
+        animateCount(document.getElementById('statRest'), 500, 37, 0);
+      });
+    }
+
+    var banner = document.getElementById('alertBanner');
+    if (banner) {
+      onView(banner, 0.4, function (t) {
+        setTimeout(function () { t.classList.add('in'); }, reduce ? 0 : 1600);
+      });
+    }
+
+    /* cronômetro: PRAZO é uma data-limite REAL e fixa. Edite aqui. */
+    var PRAZO = new Date('2026-07-20T23:59:59');
+    var cdH = document.getElementById('cdH'), cdM = document.getElementById('cdM'), cdS = document.getElementById('cdS');
+    if (cdH && cdM && cdS) {
+      function pad(n) { return (n < 10 ? '0' : '') + n; }
+      function tickClock() {
+        var diff = PRAZO.getTime() - Date.now();
+        if (diff <= 0) { cdH.textContent = '00'; cdM.textContent = '00'; cdS.textContent = '00'; return; }
+        var h = Math.floor(diff / 3600000);
+        var m = Math.floor((diff % 3600000) / 60000);
+        var s = Math.floor((diff % 60000) / 1000);
+        cdH.textContent = pad(h); cdM.textContent = pad(m); cdS.textContent = pad(s);
+      }
+      tickClock();
+      setInterval(tickClock, 1000);
+    }
+
+    /* dobra 16: FAQ acordeão (uma aberta por vez) */
+    var faq = document.getElementById('faq');
+    if (faq) {
+      var items = Array.prototype.slice.call(faq.querySelectorAll('.faq-item'));
+      items.forEach(function (it) {
+        var btn = it.querySelector('.faq-q');
+        btn.addEventListener('click', function () {
+          var isOpen = it.classList.contains('open');
+          items.forEach(function (o) { o.classList.remove('open'); o.querySelector('.faq-q').setAttribute('aria-expanded', 'false'); });
+          if (!isOpen) { it.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+        });
+      });
+    }
+
+    /* dobra 17: fechamento (frases escalonadas + caixa de impacto) */
+    document.querySelectorAll('.creveal').forEach(function (el) {
+      onView(el, 0.5, function (t) {
+        var i = parseInt(t.getAttribute('data-i'), 10) || 0;
+        t.style.transitionDelay = (i * 300) + 'ms';
+        t.classList.add('in');
+      });
+    });
+    onView(document.querySelector('.diffbox'), 0.4, function (t) { t.classList.add('in'); });
+  })();
+</script>
